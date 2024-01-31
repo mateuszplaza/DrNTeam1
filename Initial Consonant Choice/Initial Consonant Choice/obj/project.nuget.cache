@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "c11hxPH3yLDjKjzVz31WteoUbLiVu6H7AqvGa4Vxa9MHh2YkmFtU+0lsLATcLt8UTAYv2rxADvCEfo5Vyov58w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mattd\\Documents\\Senior Project\\Initial Consonant Choice\\Initial Consonant Choice\\Initial Consonant Choice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mattd\\.nuget\\packages\\system.speech\\8.0.0\\system.speech.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
