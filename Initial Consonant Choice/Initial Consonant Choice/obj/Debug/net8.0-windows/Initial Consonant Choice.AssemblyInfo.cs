@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Initial Consonant Choice")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4149f0c5adc1eca802de7dede75dc8586dfe202")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40ae6ca3a73512c494e348fe2c09adc1ffd9dc56")]
 [assembly: System.Reflection.AssemblyProductAttribute("Initial Consonant Choice")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Initial Consonant Choice")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -40,3 +40,4 @@ C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Cho
 C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.pdb
 C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.genruntimeconfig.cache
 C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\ref\Initial Consonant Choice.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial_Consonant_Choice.Start.resources
