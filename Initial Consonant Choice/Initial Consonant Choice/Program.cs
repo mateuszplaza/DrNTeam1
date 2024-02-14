@@ -12,6 +12,8 @@ namespace Initial_Consonant_Choice
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+            Application.Run(new PracticeEndScreen(10));
+
         }
     }
 }
