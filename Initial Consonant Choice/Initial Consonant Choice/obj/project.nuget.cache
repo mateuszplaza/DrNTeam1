@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PKRf2nFKzMGkAIM7o8fvHQBR4dPsuX/Eo/7JOSpNaJDk8LZ0e5czhYDo63RNvFI2iMfr+y+tQ+bEG5cQSYas1g==",
+  "dgSpecHash": "SoBRHzSI1tfuzzATAwt7WaezJoeD1ro6TrmZND6M0fqeE+fFBGTmG7d4pKGMBU47+dyIQra96by4zpjcxjgdMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pegda\\Documents\\DrNTeam1\\Initial Consonant Choice\\Initial Consonant Choice\\Initial Consonant Choice.csproj",
+  "projectFilePath": "C:\\Users\\Santiago Carpio\\Documents\\GitHub\\DrNTeam1\\Initial Consonant Choice\\Initial Consonant Choice\\Initial Consonant Choice.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\pegda\\.nuget\\packages\\system.speech\\8.0.0\\system.speech.8.0.0.nupkg.sha512"
+    "C:\\Users\\Santiago Carpio\\.nuget\\packages\\system.speech\\8.0.0\\system.speech.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\pegda\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\pegda\\.nuget\\packages"
+      "C:\\Users\\Santiago Carpio\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Santiago Carpio\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
