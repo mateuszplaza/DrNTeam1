@@ -18,3 +18,26 @@ C:\Users\mattd\Documents\Senior Project\Initial Consonant Choice\Initial Consona
 C:\Users\mattd\Documents\Senior Project\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Speech.dll
 C:\Users\mattd\Documents\Senior Project\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.AssemblyReference.cache
 C:\Users\mattd\Documents\Senior Project\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.CopyComplete
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\Initial Consonant Choice.exe
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\Initial Consonant Choice.deps.json
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\Initial Consonant Choice.runtimeconfig.json
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\Initial Consonant Choice.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\Initial Consonant Choice.pdb
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\System.Speech.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Speech.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.AssemblyReference.cache
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial_Consonant_Choice.Form1.resources
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial_Consonant_Choice.Setup.resources
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.GenerateResource.cache
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.AssemblyInfoInputs.cache
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.AssemblyInfo.cs
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.CoreCompileInputs.cache
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.sourcelink.json
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.csproj.CopyComplete
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\refint\Initial Consonant Choice.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.pdb
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial Consonant Choice.genruntimeconfig.cache
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\ref\Initial Consonant Choice.dll
+C:\Users\pegda\Documents\DrNTeam1\Initial Consonant Choice\Initial Consonant Choice\obj\Debug\net8.0-windows\Initial_Consonant_Choice.Start.resources
