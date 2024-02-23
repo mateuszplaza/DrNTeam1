@@ -10,7 +10,10 @@ namespace Initial_Consonant_Choice.Utilities
     internal class AudioManager
     {
         private String audioPath = "";
+        //Maps a tuple containing the trial number and word index to a string containing the word
         private Dictionary<Tuple<int, int>, String> wordMap = new Dictionary<Tuple<int, int>, String>();
+
+        //Constructor that takes a path to the folder containing the audio files and builds the wordMap
         public AudioManager(String audioPath)
         {
             this.audioPath = audioPath;
@@ -23,6 +26,7 @@ namespace Initial_Consonant_Choice.Utilities
                 wordMap.Add(t, fileNameSplit[2].Substring(0, fileNameSplit[2].Length-4));
             }
         }
+        //Given a trial number and word index, play the given sound.
         public void PlaySound(int trial, int index)
         {
             SoundPlayer soundPlayer = new SoundPlayer(audioPath + "\\" + trial + "_" + index + "_" + wordMap[new Tuple<int, int>(trial, index)] + ".wav");
