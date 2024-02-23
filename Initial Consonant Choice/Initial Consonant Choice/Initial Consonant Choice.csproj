@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="TrialEndScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PracticeEndScreen.cs">
       <SubType>Form</SubType>
     </Compile>

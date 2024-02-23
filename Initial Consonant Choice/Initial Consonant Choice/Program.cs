@@ -23,6 +23,7 @@ namespace Initial_Consonant_Choice
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
             Application.Run(new PracticeEndScreen(10));
+            Application.Run(new TrialEndScreen());
         }
     }
 }
