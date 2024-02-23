@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Santiago Carpio\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\pegda\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Santiago Carpio\\.nuget\\packages"
     ],
     "configProperties": {

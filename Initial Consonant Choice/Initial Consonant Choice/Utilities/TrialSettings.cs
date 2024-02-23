@@ -21,5 +21,12 @@ namespace Initial_Consonant_Choice.Utilities
             this.idResponse = idResponse;
             this.idCorrect = idCorrect;
         }
+
+        public String getParticipantID() { return participantID; }
+        public bool getPractice() { return practice; }
+        public bool getIdResponse() { return idResponse; }
+        public bool getIdCorrect() { return idCorrect; }
+
+
     }
 }
