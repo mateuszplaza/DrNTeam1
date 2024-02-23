@@ -38,8 +38,8 @@
             ContinueButton = new Button();
             Page = new FlowLayoutPanel();
             FormTablePanel = new TableLayoutPanel();
-            Title = new TextBox();
             ParticipantScoreLabel = new Label();
+            Title = new Label();
             ButtonsPanel.SuspendLayout();
             Page.SuspendLayout();
             FormTablePanel.SuspendLayout();
@@ -57,7 +57,7 @@
             ButtonsPanel.Controls.Add(QuitButton, 0, 0);
             ButtonsPanel.Controls.Add(ContinueButton, 2, 0);
             ButtonsPanel.Dock = DockStyle.Fill;
-            ButtonsPanel.Location = new Point(10, 108);
+            ButtonsPanel.Location = new Point(10, 96);
             ButtonsPanel.Margin = new Padding(10);
             ButtonsPanel.MaximumSize = new Size(1000, 0);
             ButtonsPanel.MinimumSize = new Size(500, 0);
@@ -119,7 +119,7 @@
             Page.Dock = DockStyle.Fill;
             Page.Location = new Point(10, 10);
             Page.Name = "Page";
-            Page.Size = new Size(715, 477);
+            Page.Size = new Size(715, 541);
             Page.TabIndex = 5;
             // 
             // FormTablePanel
@@ -128,9 +128,9 @@
             FormTablePanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             FormTablePanel.ColumnCount = 1;
             FormTablePanel.ColumnStyles.Add(new ColumnStyle());
-            FormTablePanel.Controls.Add(Title, 0, 0);
-            FormTablePanel.Controls.Add(ButtonsPanel, 0, 2);
             FormTablePanel.Controls.Add(ParticipantScoreLabel, 0, 1);
+            FormTablePanel.Controls.Add(ButtonsPanel, 0, 2);
+            FormTablePanel.Controls.Add(Title, 0, 0);
             FormTablePanel.Dock = DockStyle.Fill;
             FormTablePanel.Location = new Point(3, 3);
             FormTablePanel.MaximumSize = new Size(1000, 0);
@@ -140,39 +140,37 @@
             FormTablePanel.RowStyles.Add(new RowStyle());
             FormTablePanel.RowStyles.Add(new RowStyle());
             FormTablePanel.RowStyles.Add(new RowStyle());
-            FormTablePanel.Size = new Size(613, 188);
+            FormTablePanel.Size = new Size(613, 176);
             FormTablePanel.TabIndex = 10;
-            // 
-            // Title
-            // 
-            Title.BackColor = SystemColors.Control;
-            Title.BorderStyle = BorderStyle.None;
-            Title.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Title.ForeColor = Color.Black;
-            Title.Location = new Point(10, 10);
-            Title.Margin = new Padding(10);
-            Title.Name = "Title";
-            Title.Size = new Size(387, 43);
-            Title.TabIndex = 5;
-            Title.Text = "Practice Session Complete";
             // 
             // ParticipantScoreLabel
             // 
             ParticipantScoreLabel.AutoSize = true;
-            ParticipantScoreLabel.Location = new Point(10, 63);
-            ParticipantScoreLabel.Margin = new Padding(10, 0, 10, 0);
+            ParticipantScoreLabel.Location = new Point(3, 48);
+            ParticipantScoreLabel.Margin = new Padding(3);
             ParticipantScoreLabel.Name = "ParticipantScoreLabel";
             ParticipantScoreLabel.Padding = new Padding(0, 10, 0, 10);
             ParticipantScoreLabel.Size = new Size(102, 35);
             ParticipantScoreLabel.TabIndex = 6;
             ParticipantScoreLabel.Text = "Participant Score: ";
             // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.Font = new Font("Segoe UI", 24F);
+            Title.Location = new Point(3, 0);
+            Title.Name = "Title";
+            Title.Size = new Size(395, 45);
+            Title.TabIndex = 7;
+            Title.Text = "Practice Session Complete";
+            // 
             // PracticeEndScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(735, 497);
+            ClientSize = new Size(735, 561);
             Controls.Add(Page);
+            MinimumSize = new Size(600, 500);
             Name = "PracticeEndScreen";
             Padding = new Padding(10);
             Text = "Practice Session Complete";
@@ -194,9 +192,9 @@
         private Button QuitButton;
         private Button ContinueButton;
         private FlowLayoutPanel Page;
-        private TextBox Title;
         private TableLayoutPanel FormTablePanel;
 
         private Label ParticipantScoreLabel;
+        private Label Title;
     }
 }

@@ -36,13 +36,13 @@
             SaveAndQuitButton = new Button();
             MainMenuButton = new Button();
             Page = new FlowLayoutPanel();
-            Title = new TextBox();
             FormTablePanel = new TableLayoutPanel();
             FilePanel = new TableLayoutPanel();
             SaveResultsTo = new Label();
             FilePathTextbox = new TextBox();
             BrowseButton = new Button();
             folderBrowserDialog = new FolderBrowserDialog();
+            Title = new Label();
             ButtonsPanel.SuspendLayout();
             FormTablePanel.SuspendLayout();
             FilePanel.SuspendLayout();
@@ -106,27 +106,14 @@
             Page.Size = new Size(0, 0);
             Page.TabIndex = 5;
             // 
-            // Title
-            // 
-            Title.BackColor = SystemColors.Control;
-            Title.BorderStyle = BorderStyle.None;
-            Title.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Title.ForeColor = Color.Black;
-            Title.Location = new Point(10, 10);
-            Title.Margin = new Padding(10);
-            Title.Name = "Title";
-            Title.Size = new Size(387, 43);
-            Title.TabIndex = 5;
-            Title.Text = "Exercises Complete";
-            // 
             // FormTablePanel
             // 
             FormTablePanel.AutoSize = true;
             FormTablePanel.ColumnCount = 1;
             FormTablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             FormTablePanel.Controls.Add(ButtonsPanel, 0, 3);
-            FormTablePanel.Controls.Add(Title, 0, 0);
             FormTablePanel.Controls.Add(FilePanel, 0, 1);
+            FormTablePanel.Controls.Add(Title, 0, 0);
             FormTablePanel.Dock = DockStyle.Fill;
             FormTablePanel.Location = new Point(10, 10);
             FormTablePanel.Name = "FormTablePanel";
@@ -147,7 +134,7 @@
             FilePanel.Controls.Add(SaveResultsTo, 0, 0);
             FilePanel.Controls.Add(FilePathTextbox, 1, 0);
             FilePanel.Controls.Add(BrowseButton, 2, 0);
-            FilePanel.Location = new Point(3, 66);
+            FilePanel.Location = new Point(3, 48);
             FilePanel.Name = "FilePanel";
             FilePanel.RowCount = 1;
             FilePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -181,6 +168,16 @@
             BrowseButton.UseVisualStyleBackColor = true;
             BrowseButton.Click += BrowseButton_Click;
             // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.Font = new Font("Segoe UI", 24F);
+            Title.Location = new Point(3, 0);
+            Title.Name = "Title";
+            Title.Size = new Size(295, 45);
+            Title.TabIndex = 8;
+            Title.Text = "Exercises Complete";
+            // 
             // TrialEndScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -188,7 +185,7 @@
             ClientSize = new Size(735, 497);
             Controls.Add(FormTablePanel);
             Controls.Add(Page);
-            MinimumSize = new Size(500, 500);
+            MinimumSize = new Size(600, 500);
             Name = "TrialEndScreen";
             Padding = new Padding(10);
             Text = "Practice Session Complete";
@@ -208,12 +205,12 @@
         private Button SaveAndQuitButton;
         private Button MainMenuButton;
         private FlowLayoutPanel Page;
-        private TextBox Title;
         private TableLayoutPanel FormTablePanel;
         private Label SaveResultsTo;
         private TableLayoutPanel FilePanel;
         private Button BrowseButton;
         private TextBox FilePathTextbox;
         private FolderBrowserDialog folderBrowserDialog;
+        private Label Title;
     }
 }
