@@ -4,6 +4,9 @@
     <Compile Update="ExerciseFacilitator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ExerciseParticipantScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

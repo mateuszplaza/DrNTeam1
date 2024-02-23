@@ -20,6 +20,26 @@ namespace Initial_Consonant_Choice.Utilities
             If we randomize order of trials we need to store the new order of trials somewhere for the correct response
             Array to make sense */
         }
+
+        public int getPracticeTrialsRequired()
+        {
+            return practiceTrialsRequired;
+        }
+
+        public int[] getTrialStimulusRepeats()
+        {
+            return trialStimulusRepeats;
+        }
+
+        public string[] getCorrectResponse()
+        {
+            return correctResponse;
+        }
+
+        public string[] getChildResponse()
+        {
+            return childResponse;
+        }
         
     }
 }
