@@ -60,6 +60,7 @@ namespace Initial_Consonant_Choice
 
         public void enterPhase1()
         {
+            setSpeaker(-1);
             pictureBox1.Visible = false;
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
@@ -67,6 +68,7 @@ namespace Initial_Consonant_Choice
 
         public void enterPhase2()
         {
+            setSpeaker(-1);
             pictureBox1.Visible = true;
             pictureBox2.Visible = true;
             pictureBox3.Visible = true;
@@ -74,6 +76,7 @@ namespace Initial_Consonant_Choice
 
         public void setSpeaker(int speaker)
         {
+            speaker--;
             PictureBox[] faces = { pictureBox1, pictureBox2, pictureBox3 };
             for(int i = 0; i < 3; i++)
             {
@@ -107,8 +110,6 @@ namespace Initial_Consonant_Choice
                 xLocations[i] = basePanel.Controls[i].Location.X;
                 yLocations[i] = basePanel.Controls[i].Location.Y;
             }
-            randomizeFaces();
-            setSpeaker(0);
             UIResize(sender, e);
         }
     }

@@ -1,3 +1,4 @@
+using Initial_Consonant_Choice.Utilities;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -10,10 +11,12 @@ namespace Initial_Consonant_Choice
 {
     public partial class TrialEndScreen : Form
     {
+        public TrialData data;
 
-        public TrialEndScreen()
+        public TrialEndScreen(TrialData data)
         {
             InitializeComponent();
+            this.data = data;
         }
 
         private void SaveAndQuitButton_Click(object sender, EventArgs e)
