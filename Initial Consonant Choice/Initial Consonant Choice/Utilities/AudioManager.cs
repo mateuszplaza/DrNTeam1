@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Initial_Consonant_Choice.Utilities
 {
-    internal class AudioManager
+    public class AudioManager
     {
         private String audioPath = "";
         //Maps a tuple containing the trial number and word index to a string containing the word
@@ -27,10 +27,25 @@ namespace Initial_Consonant_Choice.Utilities
             }
         }
         //Given a trial number and word index, play the given sound.
-        public void PlaySound(int trial, int index)
+        public void PlaySound(int trial, int index, bool isPractice)
         {
+            if (isPractice)
+            {
+                trial += 100;
+            }
             SoundPlayer soundPlayer = new SoundPlayer(audioPath + "\\" + trial + "_" + index + "_" + wordMap[new Tuple<int, int>(trial, index)] + ".wav");
             soundPlayer.Play();
+        }
+
+        //Same as PlaySound, but synchronous
+        public void PlaySoundSync(int trial, int index, bool isPractice)
+        {
+            if (isPractice)
+            {
+                trial += 100;
+            }
+            SoundPlayer soundPlayer = new SoundPlayer(audioPath + "\\" + trial + "_" + index + "_" + wordMap[new Tuple<int, int>(trial, index)] + ".wav");
+            soundPlayer.PlaySync();
         }
     }
 }

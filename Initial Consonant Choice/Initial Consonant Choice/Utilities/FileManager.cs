@@ -21,14 +21,14 @@ namespace Initial_Consonant_Choice.Utilities
         {
             //TODO: Export trial data in a .csv file at specified location
 
-            int[] trialStimulusRepeats = trialData.getTrialStimulusRepeats();
-            string[] correctResponse = trialData.getCorrectResponse();
-            string[] childResponse = trialData.getChildResponse();
+            int[] trialStimulusRepeats = trialData.trialStimulusRepeats;
+            string[] correctResponse = trialData.correctResponse;
+            string[] childResponse = trialData.childResponse;
 
             string separator = ",";
             StringBuilder output = new StringBuilder();
 
-            string[] nLine = { "Practice Trials Required", trialData.getPracticeTrialsRequired().ToString() };
+            string[] nLine = { "Practice Trials Required", trialData.practiceTrialsRequired.ToString() };
             output.AppendLine(string.Join(separator, nLine));
 
             string[] practiceHeadings = { "Practice Trial #", "Stimulus Repeats", "Correct Response", "Child Response" };
