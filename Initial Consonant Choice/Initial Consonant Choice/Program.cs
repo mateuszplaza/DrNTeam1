@@ -19,7 +19,7 @@ namespace Initial_Consonant_Choice
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ExerciseFacilitator(true, new TrialSettings("", true, false, false, 1000), new TrialData()));
+            Application.Run(new Form1());
         }
     }
 }
