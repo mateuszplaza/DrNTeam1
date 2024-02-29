@@ -21,6 +21,7 @@ namespace Initial_Consonant_Choice
 
         private void SaveAndQuitButton_Click(object sender, EventArgs e)
         {
+            new FileManager();
             Application.Exit();
         }
 
@@ -36,6 +37,13 @@ namespace Initial_Consonant_Choice
                 // Display the selected folder path in the textbox
                 FilePathTextbox.Text = selectedFolderPath;
             }
+        }
+
+        private void MainMenuButton_Click(object sender, EventArgs e)
+        {
+            Start start = new Start();
+            this.Hide();
+            start.Show();
         }
     }
 }
