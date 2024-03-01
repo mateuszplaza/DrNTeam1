@@ -36,30 +36,32 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 30F);
-            label1.Location = new Point(125, 72);
+            label1.Location = new Point(156, 90);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(561, 67);
+            label1.Size = new Size(678, 81);
             label1.TabIndex = 0;
             label1.Text = "Initial Consonant Choice";
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 18F);
-            button1.Location = new Point(320, 298);
+            button1.Location = new Point(400, 372);
+            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(139, 59);
+            button1.Size = new Size(174, 74);
             button1.TabIndex = 1;
             button1.Text = "Start";
             button1.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // Start
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(1000, 562);
             Controls.Add(button1);
             Controls.Add(label1);
-            Name = "Form2";
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "Start";
             Text = "Form2";
             ResumeLayout(false);
             PerformLayout();

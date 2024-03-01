@@ -209,8 +209,7 @@
             // 
             // ExerciseFacilitator
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(800, 450);
             Controls.Add(phase0Panel);
             Controls.Add(phase2Panel);

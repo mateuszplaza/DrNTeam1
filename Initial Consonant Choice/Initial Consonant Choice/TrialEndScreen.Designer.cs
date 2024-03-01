@@ -182,8 +182,7 @@
             // 
             // TrialEndScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(735, 497);
             Controls.Add(FormTablePanel);
             Controls.Add(Page);
