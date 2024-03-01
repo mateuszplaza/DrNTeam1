@@ -1,3 +1,4 @@
+using Initial_Consonant_Choice.Utilities;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -8,11 +9,13 @@ using System.Windows.Forms;
 
 namespace Initial_Consonant_Choice
 {
+
     public partial class PracticeEndScreen : Form
     {
         private int participantScore = 0;  // Variable to hold participant's score
         private FlowLayoutPanel buttonPanel;
         private Label textview;
+        static bool practiceAgain = true;
 
 
         public PracticeEndScreen(int participantScore)
@@ -20,11 +23,12 @@ namespace Initial_Consonant_Choice
             InitializeComponent();
             this.participantScore = participantScore;
             DisplayScore();
+            PracticeAgainButton.Enabled = practiceAgain;
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void DisplayScore()
         {
-
             // Display participant's score
             this.ParticipantScoreLabel.Text = $"Participant score: {participantScore}/6";
         }
@@ -37,6 +41,21 @@ namespace Initial_Consonant_Choice
         private void QuitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ContinueButton_Click(object sender, EventArgs e)
+        {
+            ExerciseFacilitator fac = new ExerciseFacilitator(false, new TrialSettings("", true, false, false, 1000), new TrialData());
+            this.Hide();
+            fac.ShowDialog();
+        }
+
+        private void PracticeAgainButton_Click(object sender, EventArgs e)
+        {
+            practiceAgain = false;
+            ExerciseFacilitator fac = new ExerciseFacilitator(true, new TrialSettings("", true, false, false, 1000), new TrialData());
+            this.Hide();
+            fac.ShowDialog();
         }
     }
 }

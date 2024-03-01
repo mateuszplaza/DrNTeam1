@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Initial_Consonant_Choice.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Initial_Consonant_Choice
         public Setup()
         {
             InitializeComponent();
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void Settings_Load(object sender, EventArgs e)

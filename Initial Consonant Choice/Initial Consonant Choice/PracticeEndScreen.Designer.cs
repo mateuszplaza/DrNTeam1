@@ -7,9 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        private Button quitButton;
-        private Button practiceAgainButton;
-        private Button continueButton;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -81,6 +78,7 @@
             PracticeAgainButton.TabIndex = 2;
             PracticeAgainButton.Text = "Practice Again";
             PracticeAgainButton.UseVisualStyleBackColor = true;
+            PracticeAgainButton.Click += PracticeAgainButton_Click;
             // 
             // QuitButton
             // 
@@ -110,6 +108,7 @@
             ContinueButton.TabIndex = 3;
             ContinueButton.Text = "Continue To Exercises";
             ContinueButton.UseVisualStyleBackColor = true;
+            ContinueButton.Click += ContinueButton_Click;
             // 
             // Page
             // 
@@ -166,8 +165,7 @@
             // 
             // PracticeEndScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(735, 561);
             Controls.Add(Page);
             MinimumSize = new Size(600, 500);

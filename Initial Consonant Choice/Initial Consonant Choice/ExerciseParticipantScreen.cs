@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Initial_Consonant_Choice.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,30 +20,34 @@ namespace Initial_Consonant_Choice
         int[] xLocations;
         int[] yLocations;
         List<int> faceNums = new List<int>() { 1, 2, 3 };
+        bool initialized = false;
 
         public void UIResize(object sender, System.EventArgs e)
         {
-            // Keep a 16:9 panel in the top middle of the screen
-            if(this.Height / 9 > this.Width / 16)
+            if(initialized) 
             {
-                basePanel.Width = this.Width;
-                basePanel.Height = this.Width / 16 * 9;
-                basePanel.Location = new Point(0, 0);
-            }
-            else
-            {
-                basePanel.Height = this.Height;
-                basePanel.Width = this.Height / 9 * 16;
-                basePanel.Location = new Point((this.Width - basePanel.Width) / 2, 0);
-            }
+                // Keep a 16:9 panel in the top middle of the screen
+                if (this.Height / 9 > this.Width / 16)
+                {
+                    basePanel.Width = this.Width;
+                    basePanel.Height = this.Width / 16 * 9;
+                    basePanel.Location = new Point(0, 0);
+                }
+                else
+                {
+                    basePanel.Height = this.Height;
+                    basePanel.Width = this.Height / 9 * 16;
+                    basePanel.Location = new Point((this.Width - basePanel.Width) / 2, 0);
+                }
 
-            // Resize the images
-            for(int i = 0; i < basePanel.Controls.Count; i++)
-            {
-                Control c = basePanel.Controls[i];
-                c.Width = widths[i] * basePanel.Width / BASE_WIDTH;
-                c.Height = heights[i] * basePanel.Height / BASE_HEIGHT;
-                c.Location = new Point(xLocations[i] * basePanel.Width / BASE_WIDTH, yLocations[i] * basePanel.Height / BASE_WIDTH);
+                // Resize the images
+                for (int i = 0; i < basePanel.Controls.Count; i++)
+                {
+                    Control c = basePanel.Controls[i];
+                    c.Width = widths[i] * basePanel.Width / BASE_WIDTH;
+                    c.Height = heights[i] * basePanel.Height / BASE_HEIGHT;
+                    c.Location = new Point(xLocations[i] * basePanel.Width / BASE_WIDTH, yLocations[i] * basePanel.Height / BASE_WIDTH);
+                }
             }
             
         }
@@ -94,6 +99,7 @@ namespace Initial_Consonant_Choice
         public ExerciseParticipantScreen()
         {
             InitializeComponent();
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void ExerciseParticipantScreen_Load(object sender, EventArgs e)
@@ -110,6 +116,7 @@ namespace Initial_Consonant_Choice
                 xLocations[i] = basePanel.Controls[i].Location.X;
                 yLocations[i] = basePanel.Controls[i].Location.Y;
             }
+            initialized = true;
             UIResize(sender, e);
         }
     }
