@@ -41,8 +41,8 @@
             SaveResultsTo = new Label();
             FilePathTextbox = new TextBox();
             BrowseButton = new Button();
-            folderBrowserDialog = new FolderBrowserDialog();
             Title = new Label();
+            folderBrowserDialog = new FolderBrowserDialog();
             ButtonsPanel.SuspendLayout();
             FormTablePanel.SuspendLayout();
             FilePanel.SuspendLayout();
@@ -180,8 +180,7 @@
             // 
             // TrialEndScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(735, 497);
             Controls.Add(FormTablePanel);
             Controls.Add(Page);
