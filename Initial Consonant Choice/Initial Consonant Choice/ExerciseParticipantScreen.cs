@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Initial_Consonant_Choice.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -98,6 +99,7 @@ namespace Initial_Consonant_Choice
         public ExerciseParticipantScreen()
         {
             InitializeComponent();
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void ExerciseParticipantScreen_Load(object sender, EventArgs e)

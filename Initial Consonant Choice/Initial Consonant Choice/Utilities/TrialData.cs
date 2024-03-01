@@ -8,6 +8,7 @@ namespace Initial_Consonant_Choice.Utilities
 {
     public class TrialData
     {
+        public int participantID;
         public int practiceTrialsRequired = 0;
         public int[] trialStimulusRepeats = new int[48];
         public string[] correctResponse = new string[48];

@@ -34,7 +34,7 @@
         {
             ButtonsPanel = new TableLayoutPanel();
             SaveAndQuitButton = new Button();
-            MainMenuButton = new Button();
+            SaveAndReturnButton = new Button();
             Page = new FlowLayoutPanel();
             FormTablePanel = new TableLayoutPanel();
             FilePanel = new TableLayoutPanel();
@@ -57,14 +57,14 @@
             ButtonsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             ButtonsPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             ButtonsPanel.Controls.Add(SaveAndQuitButton, 1, 0);
-            ButtonsPanel.Controls.Add(MainMenuButton, 0, 0);
+            ButtonsPanel.Controls.Add(SaveAndReturnButton, 0, 0);
             ButtonsPanel.Location = new Point(10, 387);
             ButtonsPanel.Margin = new Padding(10);
             ButtonsPanel.Name = "ButtonsPanel";
             ButtonsPanel.Padding = new Padding(10);
             ButtonsPanel.RowCount = 1;
             ButtonsPanel.RowStyles.Add(new RowStyle());
-            ButtonsPanel.Size = new Size(590, 70);
+            ButtonsPanel.Size = new Size(629, 70);
             ButtonsPanel.TabIndex = 4;
             // 
             // SaveAndQuitButton
@@ -72,11 +72,11 @@
             SaveAndQuitButton.AutoSize = true;
             SaveAndQuitButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             SaveAndQuitButton.Dock = DockStyle.Top;
-            SaveAndQuitButton.Location = new Point(230, 10);
+            SaveAndQuitButton.Location = new Point(243, 10);
             SaveAndQuitButton.Margin = new Padding(30, 0, 30, 0);
             SaveAndQuitButton.MinimumSize = new Size(100, 50);
             SaveAndQuitButton.Name = "SaveAndQuitButton";
-            SaveAndQuitButton.Size = new Size(130, 50);
+            SaveAndQuitButton.Size = new Size(143, 50);
             SaveAndQuitButton.TabIndex = 2;
             SaveAndQuitButton.Text = "Save and Quit";
             SaveAndQuitButton.UseVisualStyleBackColor = true;
@@ -84,18 +84,18 @@
             // 
             // MainMenuButton
             // 
-            MainMenuButton.AutoSize = true;
-            MainMenuButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            MainMenuButton.Dock = DockStyle.Top;
-            MainMenuButton.Location = new Point(40, 10);
-            MainMenuButton.Margin = new Padding(30, 0, 30, 0);
-            MainMenuButton.MinimumSize = new Size(100, 50);
-            MainMenuButton.Name = "MainMenuButton";
-            MainMenuButton.Size = new Size(130, 50);
-            MainMenuButton.TabIndex = 0;
-            MainMenuButton.Text = "Return to Main Menu";
-            MainMenuButton.UseVisualStyleBackColor = true;
-            MainMenuButton.Click += MainMenuButton_Click;
+            SaveAndReturnButton.AutoSize = true;
+            SaveAndReturnButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            SaveAndReturnButton.Dock = DockStyle.Top;
+            SaveAndReturnButton.Location = new Point(40, 10);
+            SaveAndReturnButton.Margin = new Padding(30, 0, 30, 0);
+            SaveAndReturnButton.MinimumSize = new Size(100, 50);
+            SaveAndReturnButton.Name = "MainMenuButton";
+            SaveAndReturnButton.Size = new Size(143, 50);
+            SaveAndReturnButton.TabIndex = 0;
+            SaveAndReturnButton.Text = "Save and Return to Start";
+            SaveAndReturnButton.UseVisualStyleBackColor = true;
+            SaveAndReturnButton.Click += SaveAndReturnButton_Click;
             // 
             // Page
             // 
@@ -204,7 +204,7 @@
 
         private TableLayoutPanel ButtonsPanel;
         private Button SaveAndQuitButton;
-        private Button MainMenuButton;
+        private Button SaveAndReturnButton;
         private FlowLayoutPanel Page;
         private TableLayoutPanel FormTablePanel;
         private Label SaveResultsTo;

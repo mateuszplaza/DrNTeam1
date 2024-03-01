@@ -21,11 +21,10 @@ namespace Initial_Consonant_Choice
         public PracticeEndScreen(int participantScore)
         {
             InitializeComponent();
-            Hide();
             this.participantScore = participantScore;
             DisplayScore();
             PracticeAgainButton.Enabled = practiceAgain;
-            Show();
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void DisplayScore()
@@ -48,7 +47,7 @@ namespace Initial_Consonant_Choice
         {
             ExerciseFacilitator fac = new ExerciseFacilitator(false, new TrialSettings("", true, false, false, 1000), new TrialData());
             this.Hide();
-            fac.Show();
+            fac.ShowDialog();
         }
 
         private void PracticeAgainButton_Click(object sender, EventArgs e)
@@ -56,7 +55,7 @@ namespace Initial_Consonant_Choice
             practiceAgain = false;
             ExerciseFacilitator fac = new ExerciseFacilitator(true, new TrialSettings("", true, false, false, 1000), new TrialData());
             this.Hide();
-            fac.Show();
+            fac.ShowDialog();
         }
     }
 }
