@@ -89,6 +89,8 @@ namespace Initial_Consonant_Choice
         {
             InitializeComponent();
 
+            this.FormClosing += FormUtils.HandleFormClosing;
+
             this.isPractice = isPractice;
             if (isPractice)
             {

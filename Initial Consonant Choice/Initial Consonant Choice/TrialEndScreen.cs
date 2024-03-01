@@ -16,11 +16,14 @@ namespace Initial_Consonant_Choice
     {
         public TrialData data;
 
+
         public TrialEndScreen(TrialData data)
         {
             InitializeComponent();
             this.data = data;
             SaveAndQuitButton.Enabled = false;
+            SaveAndReturnButton.Enabled = false;
+            this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void FilePathTextbox_TextChanged(object sender, EventArgs e)
@@ -28,37 +31,19 @@ namespace Initial_Consonant_Choice
             if (IsFilePathValid(FilePathTextbox.Text))
             {
                 SaveAndQuitButton.Enabled = true;
+                SaveAndReturnButton.Enabled = true;
+
             }
             else 
             {
                 SaveAndQuitButton.Enabled = false;
+                SaveAndReturnButton.Enabled = false;
             }
         }
 
         private void SaveAndQuitButton_Click(object sender, EventArgs e)
         {
-            data = new TrialData();
-            FileManager FM = new FileManager(data);
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "CSV files (*.csv)|*.csv";
-                saveFileDialog.Title = "Save CSV File";
-                saveFileDialog.InitialDirectory = FilePathTextbox.Text;
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = saveFileDialog.FileName;
-                    // Writing data to the CSV file
-                    try
-                    {
-                        FM.exportTrialData(filePath);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            SaveData();
             Application.Exit();
         }
 
@@ -76,13 +61,40 @@ namespace Initial_Consonant_Choice
             }
         }
 
-        private void MainMenuButton_Click(object sender, EventArgs e)
+        private void SaveAndReturnButton_Click(object sender, EventArgs e)
         {
+            SaveData();
             Start start = new Start();
             this.Hide();
-            start.Show();
+            start.ShowDialog();
         }
 
+        private void SaveData()
+        {
+            FileManager FM = new FileManager(data);
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv";
+                saveFileDialog.Title = "Save CSV File";
+                saveFileDialog.InitialDirectory = FilePathTextbox.Text;
+                saveFileDialog.FileName = data.participantID + "_icc.csv";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+
+                    // Writing data to the CSV file
+                    try
+                    {
+                        FM.exportTrialData(filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         static bool IsFilePathValid(string filePath)
         {
             try
@@ -93,9 +105,9 @@ namespace Initial_Consonant_Choice
                     return false;
                 }
 
-                // Check if the directory is valid
-                string directory = Path.GetFullPath(filePath);
-               if (string.IsNullOrEmpty(directory) || directory.IndexOfAny(Path.GetInvalidPathChars()) != -1 || !System.IO.Directory.Exists(filePath))
+                // Check if the file path is valid
+                //Path.GetFullPath(filePath); // Will throw exception for invalid path
+                if (string.IsNullOrEmpty(filePath) || filePath.IndexOfAny(Path.GetInvalidPathChars()) != -1 || !System.IO.Directory.Exists(filePath))
                 {
                     return false;
                 }
