@@ -16,5 +16,11 @@ namespace Initial_Consonant_Choice
         {
             InitializeComponent();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Setup setup = new Setup();
+            setup.Show();
+        }
     }
 }
