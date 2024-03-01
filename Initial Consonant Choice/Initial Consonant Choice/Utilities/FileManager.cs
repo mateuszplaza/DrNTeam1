@@ -41,7 +41,7 @@ namespace Initial_Consonant_Choice.Utilities
             }
 
             string[] headings = { "Trial #", "Stimulus Repeats", "Correct Response", "Child Response" };
-            for (int i = 0; i < 48; i++)
+            for (int i = 0; i < 42; i++)
             {
                 int trialId = i + 1;
                 string newLine = string.Format("{0}, {1}, {2}, {3}", trialId.ToString(), trialStimulusRepeats[i + 6].ToString(), correctResponse[i + 6], childResponse[i + 6]);

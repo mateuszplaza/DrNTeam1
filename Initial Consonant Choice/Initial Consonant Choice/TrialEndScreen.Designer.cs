@@ -158,6 +158,7 @@
             FilePathTextbox.Name = "FilePathTextbox";
             FilePathTextbox.Size = new Size(216, 23);
             FilePathTextbox.TabIndex = 8;
+            FilePathTextbox.TextChanged += FilePathTextbox_TextChanged;
             // 
             // BrowseButton
             // 
