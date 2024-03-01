@@ -63,6 +63,7 @@ namespace Initial_Consonant_Choice
             button2.TabIndex = 1;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // checkBox1
             // 
@@ -138,9 +139,11 @@ namespace Initial_Consonant_Choice
             // 
             numericUpDown1.Location = new Point(232, 206);
             numericUpDown1.Margin = new Padding(3, 2, 3, 2);
+            numericUpDown1.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(61, 23);
             numericUpDown1.TabIndex = 9;
+            numericUpDown1.Value = new decimal(new int[] { 500, 0, 0, 0 });
             // 
             // label4
             // 
@@ -173,11 +176,6 @@ namespace Initial_Consonant_Choice
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

@@ -13,6 +13,8 @@ namespace Initial_Consonant_Choice
 {
     public partial class Setup : Form
     {
+        TrialSettings settings;
+
         public Setup()
         {
             InitializeComponent();
@@ -22,6 +24,32 @@ namespace Initial_Consonant_Choice
         private void Settings_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Begin Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string participantID = textBox1.Text;
+            bool practice = checkBox1.Checked;
+            bool idResponse = checkBox2.Checked;
+            bool idCorrect = checkBox3.Checked;
+            int isi = (int)numericUpDown1.Value;
+
+            // Initialize Trial Settings
+            settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi);
+            TrialData data = new TrialData();
+            data.participantID = int.Parse(participantID);
+
+            // Start practice or trials
+            ExerciseFacilitator fac = new ExerciseFacilitator(practice, settings, data);
+            fac.Show();
+        }
+
+        // Cancel Button
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Start start = new Start();
+            start.Show();
         }
     }
 }
