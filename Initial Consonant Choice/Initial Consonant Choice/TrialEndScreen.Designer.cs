@@ -41,8 +41,8 @@
             SaveResultsTo = new Label();
             FilePathTextbox = new TextBox();
             BrowseButton = new Button();
-            folderBrowserDialog = new FolderBrowserDialog();
             Title = new Label();
+            folderBrowserDialog = new FolderBrowserDialog();
             ButtonsPanel.SuspendLayout();
             FormTablePanel.SuspendLayout();
             FilePanel.SuspendLayout();
@@ -95,6 +95,7 @@
             MainMenuButton.TabIndex = 0;
             MainMenuButton.Text = "Return to Main Menu";
             MainMenuButton.UseVisualStyleBackColor = true;
+            MainMenuButton.Click += MainMenuButton_Click;
             // 
             // Page
             // 
@@ -157,6 +158,7 @@
             FilePathTextbox.Name = "FilePathTextbox";
             FilePathTextbox.Size = new Size(216, 23);
             FilePathTextbox.TabIndex = 8;
+            FilePathTextbox.TextChanged += FilePathTextbox_TextChanged;
             // 
             // BrowseButton
             // 
