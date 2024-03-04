@@ -19,32 +19,46 @@ namespace Initial_Consonant_Choice.Utilities
 
         public void exportTrialData(string filePath)
         {
-            //TODO: Export trial data in a .csv file at specified location
-
+            int participantID = trialData.participantID;
+            int practiceTrialsRequired = trialData.practiceTrialsRequired;
+            int isi = trialData.interstimulusInterval;
+            int numCorrect = trialData.numCorrect;
+            int[] practiceScores = trialData.practiceScores;
             int[] trialStimulusRepeats = trialData.trialStimulusRepeats;
+            int[] trialTargetRepeats = trialData.trialTargetRepeats;
+            string[] targetCorrect = trialData.targetCorrect;
             string[] correctResponse = trialData.correctResponse;
             string[] childResponse = trialData.childResponse;
 
             string separator = ",";
             StringBuilder output = new StringBuilder();
 
-            string[] nLine = { "Practice Trials Required", trialData.practiceTrialsRequired.ToString() };
-            output.AppendLine(string.Join(separator, nLine));
+            string[] idLine = { "Participant ID:", participantID.ToString() };
+            output.AppendLine(string.Join(separator, idLine));
 
-            string[] practiceHeadings = { "Practice Trial #", "Stimulus Repeats", "Correct Response", "Child Response" };
-            output.AppendLine(string.Join(separator, practiceHeadings));
-            for (int i = 0; i < 6; i++)
+            string[] practiceLine = { "# Practice Trials", practiceTrialsRequired.ToString() };
+            output.AppendLine(string.Join(separator, practiceLine));
+            
+            string[] practiceScoresLine = { "Practice Scores", practiceScores[0].ToString() + "/6" };
+            for (int i = 1; i < practiceTrialsRequired; i++)
             {
-                int trialId = i + 1;
-                string newLine = string.Format("{0}, {1}, {2}, {3}", trialId.ToString(), trialStimulusRepeats[i].ToString(), correctResponse[i], childResponse[i]);
+                string newLine = string.Format("{0}, {1}", "", practiceScores[i].ToString() + "/6");
                 output.AppendLine(string.Join(separator, newLine));
             }
 
-            string[] headings = { "Trial #", "Stimulus Repeats", "Correct Response", "Child Response" };
-            for (int i = 0; i < 42; i++)
+            string[] isiLine = { "ISI (ms)", isi.ToString() };
+            output.AppendLine(string.Join(separator, isiLine));
+
+            // Is this out of 48 or numAttempted?
+            string[] scoreLine = { "Test Score", numCorrect.ToString() + "/48" };
+            output.AppendLine(string.Join(separator, scoreLine));
+
+            string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats" };
+            output.AppendLine(string.Join(separator, headings));
+            for (int i = 0; i < 48; i++)
             {
                 int trialId = i + 1;
-                string newLine = string.Format("{0}, {1}, {2}, {3}", trialId.ToString(), trialStimulusRepeats[i + 6].ToString(), correctResponse[i + 6], childResponse[i + 6]);
+                string newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}", trialId.ToString(), targetCorrect[i], trialTargetRepeats[i].ToString(), childResponse[i], correctResponse[i], trialStimulusRepeats[i].ToString());
                 output.AppendLine(string.Join(separator, newLine));
             }
 
