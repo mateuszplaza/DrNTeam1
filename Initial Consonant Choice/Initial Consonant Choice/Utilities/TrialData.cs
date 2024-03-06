@@ -11,7 +11,10 @@ namespace Initial_Consonant_Choice.Utilities
         public int participantID = 0;
         public int practiceTrialsRequired = 0;
         public int interstimulusInterval = 0;
+        public int[] practiceScores = new int[3];
         public int[] trialStimulusRepeats = new int[48];
+        public string[] targetCorrect = new string[48];
+        public int[] trialTargetRepeats = new int[48];
         public string[] correctResponse = new string[48];
         public string[] childResponse = new string[48];
         public int numCorrect = 0;
