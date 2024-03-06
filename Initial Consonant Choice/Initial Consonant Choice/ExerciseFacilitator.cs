@@ -14,6 +14,7 @@ namespace Initial_Consonant_Choice
     public partial class ExerciseFacilitator : Form
     {
         int phase = 0;
+        int incorrectStreak = 0;
         bool isPractice;
         List<Exercise> exercises;
         TrialSettings settings;
@@ -186,6 +187,22 @@ namespace Initial_Consonant_Choice
             }
         }
 
+        private bool checkStreak()
+        {
+            if (incorrectStreak >= 6)
+            {
+                participantScreen.FormClosing -= FormUtils.HandleFormClosing;
+                participantScreen.Close();
+                TrialEndScreen tes = new TrialEndScreen(new TrialData());
+                tes.Show();
+                this.FormClosing -= FormUtils.HandleFormClosing;
+                this.Close();
+                
+                return true;
+            }
+            return false;
+        }
+
         private void beginButton_Click(object sender, EventArgs e)
         {
             phase1();
@@ -210,6 +227,8 @@ namespace Initial_Consonant_Choice
             else
             {
                 oneButton.BackColor = Color.PaleVioletRed;
+                incorrectStreak++;
+                checkStreak();
             }
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
@@ -228,6 +247,8 @@ namespace Initial_Consonant_Choice
             else
             {
                 twoButton.BackColor = Color.PaleVioletRed;
+                incorrectStreak++;
+                checkStreak();
             }
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
@@ -246,6 +267,8 @@ namespace Initial_Consonant_Choice
             else
             {
                 threeButton.BackColor = Color.PaleVioletRed;
+                incorrectStreak++;
+                checkStreak();
             }
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
