@@ -26,7 +26,7 @@ namespace Initial_Consonant_Choice.Utilities
             int[] practiceScores = trialData.practiceScores;
             int[] trialStimulusRepeats = trialData.trialStimulusRepeats;
             int[] trialTargetRepeats = trialData.trialTargetRepeats;
-            string[] targetCorrect = trialData.targetCorrect;
+            bool[] targetCorrect = trialData.targetCorrect;
             string[] correctResponse = trialData.correctResponse;
             string[] childResponse = trialData.childResponse;
 
@@ -58,7 +58,7 @@ namespace Initial_Consonant_Choice.Utilities
             for (int i = 0; i < 48; i++)
             {
                 int trialId = i + 1;
-                string newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}", trialId.ToString(), targetCorrect[i], trialTargetRepeats[i].ToString(), childResponse[i], correctResponse[i], trialStimulusRepeats[i].ToString());
+                string newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}", trialId.ToString(), targetCorrect[i]? "Yes" : "No", trialTargetRepeats[i].ToString(), childResponse[i], correctResponse[i], trialStimulusRepeats[i].ToString());
                 output.AppendLine(string.Join(separator, newLine));
             }
 

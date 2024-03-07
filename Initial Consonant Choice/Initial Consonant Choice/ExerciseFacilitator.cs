@@ -56,13 +56,14 @@ namespace Initial_Consonant_Choice
             }
         }
 
-        public void setLabels(int exerciseNum)
+        public void setLabels()
         {
-            oneButton.Text = "1: " + exercises[exerciseNum].choices[0];
-            twoButton.Text = "2: " + exercises[exerciseNum].choices[1];
-            threeButton.Text = "3: " + exercises[exerciseNum].choices[2];
+            oneButton.Text = "1: " + exercises[curExercise].choices[0];
+            twoButton.Text = "2: " + exercises[curExercise].choices[1];
+            threeButton.Text = "3: " + exercises[curExercise].choices[2];
 
-            exerciseNumLabel.Text = "Exercise " + (exerciseNum + 1) + " / " + exercises.Count;
+            exerciseNumLabel.Text = "Exercise " + (curExercise + 1) + " / " + exercises.Count;
+            currentScoreLabel.Text = "Current Score: " + data.numCorrect + " / " + data.numAttempted;
         }
 
         public void enableButtons(bool enable)
@@ -109,7 +110,8 @@ namespace Initial_Consonant_Choice
                 data.practiceTrialsRequired++;
             }
 
-            setLabels(0);
+            setLabels();
+            checkStreak();
             setPhase(0);
 
             participantScreen = new ExerciseParticipantScreen();
@@ -168,6 +170,7 @@ namespace Initial_Consonant_Choice
                 if (isPractice)
                 {
                     PracticeEndScreen endScreen = new PracticeEndScreen(data.numCorrect);
+                    data.finishPractice();
                     endScreen.ShowDialog();
                     this.Close();
                 }
@@ -180,23 +183,52 @@ namespace Initial_Consonant_Choice
             }
             else
             {
-                setLabels(curExercise);
+                setLabels();
                 participantScreen.randomizeFaces();
                 participantScreen.enterPhase1();
                 setPhase(0);
             }
         }
 
+        private void quit()
+        {
+            participantScreen.FormClosing -= FormUtils.HandleFormClosing;
+            participantScreen.Close();
+            TrialEndScreen tes = new TrialEndScreen(data);
+            tes.Show();
+            this.FormClosing -= FormUtils.HandleFormClosing;
+            this.Close();
+        }
+
         private bool checkStreak()
         {
+            if(isPractice)
+            {
+                return false;
+            }
+
+            if(incorrectStreak >= 3)
+            {
+                alertLabel.Visible = true;
+                alertLabel.Text = "! " + incorrectStreak + " incorrect responses in a row";
+            } else
+            {
+                alertLabel.Visible = false;
+            }
+
             if (incorrectStreak >= 6)
             {
-                participantScreen.FormClosing -= FormUtils.HandleFormClosing;
-                participantScreen.Close();
-                TrialEndScreen tes = new TrialEndScreen(new TrialData());
-                tes.Show();
-                this.FormClosing -= FormUtils.HandleFormClosing;
-                this.Close();
+                string message = "" + incorrectStreak + " incorrect responses in a row. Exit?";
+                string caption = "Form Closing";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+
+                // If the no button was pressed ...
+                if (result == DialogResult.Yes)
+                {
+                    quit();
+                }
                 
                 return true;
             }
@@ -210,11 +242,13 @@ namespace Initial_Consonant_Choice
 
         private void correctButton_Click(object sender, EventArgs e)
         {
+            data.targetCorrect[curExercise] = true;
             phase2();
         }
 
         private void incorrectButton_Click(object sender, EventArgs e)
         {
+            data.targetCorrect[curExercise] = false;
             phase2();
         }
 
@@ -223,6 +257,8 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 0)
             {
                 oneButton.BackColor = Color.PaleGreen;
+                incorrectStreak = 0;
+                checkStreak();
             }
             else
             {
@@ -243,6 +279,8 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 1)
             {
                 twoButton.BackColor = Color.PaleGreen;
+                incorrectStreak = 0;
+                checkStreak();
             }
             else
             {
@@ -263,6 +301,8 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 2)
             {
                 threeButton.BackColor = Color.PaleGreen;
+                incorrectStreak = 0;
+                checkStreak();
             }
             else
             {
@@ -283,7 +323,7 @@ namespace Initial_Consonant_Choice
             if (phase == 1)
             {
                 phase1();
-                data.trialStimulusRepeats[curExercise]++;
+                data.trialTargetRepeats[curExercise]++;
             }
             else if (phase == 2)
             {
@@ -299,7 +339,7 @@ namespace Initial_Consonant_Choice
 
         private void quitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            quit();
         }
     }
 }

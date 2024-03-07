@@ -44,6 +44,8 @@
             oneButton = new Button();
             phase0Panel = new Panel();
             beginButton = new Button();
+            currentScoreLabel = new Label();
+            alertLabel = new Label();
             phase1Panel.SuspendLayout();
             phase2Panel.SuspendLayout();
             phase0Panel.SuspendLayout();
@@ -64,7 +66,7 @@
             exerciseNumLabel.AutoSize = true;
             exerciseNumLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exerciseNumLabel.ForeColor = SystemColors.ControlDarkDark;
-            exerciseNumLabel.Location = new Point(51, 71);
+            exerciseNumLabel.Location = new Point(60, 69);
             exerciseNumLabel.Name = "exerciseNumLabel";
             exerciseNumLabel.Size = new Size(110, 21);
             exerciseNumLabel.TabIndex = 1;
@@ -207,10 +209,34 @@
             beginButton.UseVisualStyleBackColor = true;
             beginButton.Click += beginButton_Click;
             // 
+            // currentScoreLabel
+            // 
+            currentScoreLabel.AutoSize = true;
+            currentScoreLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            currentScoreLabel.ForeColor = SystemColors.ControlDarkDark;
+            currentScoreLabel.Location = new Point(190, 69);
+            currentScoreLabel.Name = "currentScoreLabel";
+            currentScoreLabel.Size = new Size(145, 21);
+            currentScoreLabel.TabIndex = 12;
+            currentScoreLabel.Text = "Current Score: 3 / 6";
+            // 
+            // alertLabel
+            // 
+            alertLabel.AutoSize = true;
+            alertLabel.ForeColor = Color.Red;
+            alertLabel.Location = new Point(60, 406);
+            alertLabel.Name = "alertLabel";
+            alertLabel.Size = new Size(195, 15);
+            alertLabel.TabIndex = 20;
+            alertLabel.Text = "! 1 Consecutive Incorrect Responses";
+            alertLabel.Visible = false;
+            // 
             // ExerciseFacilitator
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(800, 450);
+            Controls.Add(alertLabel);
+            Controls.Add(currentScoreLabel);
             Controls.Add(phase0Panel);
             Controls.Add(phase2Panel);
             Controls.Add(phase1Panel);
@@ -248,5 +274,7 @@
         private Button incorrectButton;
         private Panel phase0Panel;
         private Button beginButton;
+        private Label currentScoreLabel;
+        private Label alertLabel;
     }
 }
