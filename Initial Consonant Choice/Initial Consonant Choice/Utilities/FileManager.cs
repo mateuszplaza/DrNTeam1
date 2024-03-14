@@ -64,7 +64,7 @@ namespace Initial_Consonant_Choice.Utilities
 
             try
             {
-                File.AppendAllText(@filePath, output.ToString());
+                File.WriteAllText(@filePath, output.ToString());
             }
             catch(Exception ex)
             {
