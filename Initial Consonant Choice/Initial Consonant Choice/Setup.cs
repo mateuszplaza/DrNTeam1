@@ -39,7 +39,7 @@ namespace Initial_Consonant_Choice
             settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi);
             TrialData data = new TrialData();
             data.interstimulusInterval = isi;
-            data.participantID = int.Parse(participantID);
+            data.participantID = participantID;
             data.interstimulusInterval = isi;
 
             // Start practice or trials
