@@ -13,8 +13,10 @@ namespace Initial_Consonant_Choice
 {
     public partial class ExerciseParticipantScreen : Form
     {
+        ExerciseFacilitator facilitator;
         const int BASE_WIDTH = 800;
         const int BASE_HEIGHT = 450;
+        const int REINFORCEMENT_DURATION = 3000;
         int[] heights;
         int[] widths;
         int[] xLocations;
@@ -46,8 +48,23 @@ namespace Initial_Consonant_Choice
                     Control c = basePanel.Controls[i];
                     c.Width = widths[i] * basePanel.Width / BASE_WIDTH;
                     c.Height = heights[i] * basePanel.Height / BASE_HEIGHT;
-                    c.Location = new Point(xLocations[i] * basePanel.Width / BASE_WIDTH, yLocations[i] * basePanel.Height / BASE_WIDTH);
+                    c.Location = new Point(xLocations[i] * basePanel.Width / BASE_WIDTH, yLocations[i] * basePanel.Height / BASE_HEIGHT);
                 }
+
+                // Horse Panel
+                reinforcementPanel.Width = basePanel.Width;
+                reinforcementPanel.Height = basePanel.Height;
+                reinforcementPanel.Location = basePanel.Location;
+                int baseCount = basePanel.Controls.Count;
+
+                for (int i = 0; i < reinforcementPanel.Controls.Count; i++)
+                {
+                    Control c = reinforcementPanel.Controls[i];
+                    c.Width = widths[i + baseCount] * reinforcementPanel.Width / BASE_WIDTH;
+                    c.Height = heights[i + baseCount] * reinforcementPanel.Height / BASE_HEIGHT;
+                    c.Location = new Point(xLocations[i + baseCount] * reinforcementPanel.Width / BASE_WIDTH, yLocations[i + baseCount] * reinforcementPanel.Height / BASE_HEIGHT);
+                }
+
             }
             
         }
@@ -96,19 +113,51 @@ namespace Initial_Consonant_Choice
             }
         }
 
-        public ExerciseParticipantScreen()
+        public async void beginReinforcement(int completed, int total)
+        {
+            basePanel.Visible = false;
+            reinforcementPanel.Visible = true;
+
+            float progress = (float)completed / total;
+            int start = trackImage.Location.X;
+            int finalX = start + (int)(progress * trackImage.Width) - horseImage.Width;
+
+            int numIncrements = REINFORCEMENT_DURATION / 10;
+            int increment = (finalX - start) / numIncrements;
+            increment = increment == 0 ? 1 : increment;
+
+            while(horseImage.Location.X < finalX)
+            {
+                horseImage.Location = new Point(horseImage.Location.X + increment, horseImage.Location.Y);
+                await Task.Run(() => Task.Delay(10));
+            }
+
+            facilitator.progressButton.Enabled = true;
+        }
+
+        public void endReinforcement()
+        {
+            basePanel.Visible = true;
+            reinforcementPanel.Visible = false;
+        }
+
+        public ExerciseParticipantScreen(ExerciseFacilitator facilitator)
         {
             InitializeComponent();
             this.FormClosing += FormUtils.HandleFormClosing;
+            this.facilitator = facilitator;
         }
 
         private void ExerciseParticipantScreen_Load(object sender, EventArgs e)
         {
             int numControls = basePanel.Controls.Count;
-            heights = new int[numControls];
-            widths = new int[numControls];
-            xLocations = new int[numControls];
-            yLocations = new int[numControls];
+            int numReinforcementControls = reinforcementPanel.Controls.Count;
+            int totalControls = numControls + numReinforcementControls;
+
+            heights = new int[totalControls];
+            widths = new int[totalControls];
+            xLocations = new int[totalControls];
+            yLocations = new int[totalControls];
             for(int i = 0; i < numControls; i++)
             {
                 heights[i] = basePanel.Controls[i].Height;
@@ -116,6 +165,16 @@ namespace Initial_Consonant_Choice
                 xLocations[i] = basePanel.Controls[i].Location.X;
                 yLocations[i] = basePanel.Controls[i].Location.Y;
             }
+
+            for (int i = 0; i < numReinforcementControls; i++)
+            {
+                heights[i + numControls] = reinforcementPanel.Controls[i].Height;
+                widths[i + numControls] = reinforcementPanel.Controls[i].Width;
+                xLocations[i + numControls] = reinforcementPanel.Controls[i].Location.X;
+                yLocations[i + numControls] = reinforcementPanel.Controls[i].Location.Y;
+            }
+            reinforcementPanel.Visible = false;
+
             initialized = true;
             UIResize(sender, e);
         }

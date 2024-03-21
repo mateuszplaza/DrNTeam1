@@ -19,7 +19,7 @@ namespace Initial_Consonant_Choice.Utilities
 
         public void exportTrialData(string filePath)
         {
-            int participantID = trialData.participantID;
+            string participantID = trialData.participantID;
             int practiceTrialsRequired = trialData.practiceTrialsRequired;
             int isi = trialData.interstimulusInterval;
             int numCorrect = trialData.numCorrect;
@@ -33,13 +33,14 @@ namespace Initial_Consonant_Choice.Utilities
             string separator = ",";
             StringBuilder output = new StringBuilder();
 
-            string[] idLine = { "Participant ID:", participantID.ToString() };
+            string[] idLine = { "Participant ID:", participantID };
             output.AppendLine(string.Join(separator, idLine));
 
             string[] practiceLine = { "# Practice Trials", practiceTrialsRequired.ToString() };
             output.AppendLine(string.Join(separator, practiceLine));
             
             string[] practiceScoresLine = { "Practice Scores", practiceScores[0].ToString() + "/6" };
+            output.AppendLine(string.Join(separator, practiceScoresLine));
             for (int i = 1; i < practiceTrialsRequired; i++)
             {
                 string newLine = string.Format("{0}, {1}", "", practiceScores[i].ToString() + "/6");
@@ -50,7 +51,7 @@ namespace Initial_Consonant_Choice.Utilities
             output.AppendLine(string.Join(separator, isiLine));
 
             // Is this out of 48 or numAttempted?
-            string[] scoreLine = { "Test Score", "\"" + numCorrect.ToString() + "/48\"" };
+            string[] scoreLine = { "Test Score", "=\"" + numCorrect.ToString() + "/48\"" };
             output.AppendLine(string.Join(separator, scoreLine));
 
             string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats" };

@@ -16,6 +16,7 @@ namespace Initial_Consonant_Choice
         int phase = 0;
         int incorrectStreak = 0;
         bool isPractice;
+        bool inReinforcement = false;
         List<Exercise> exercises;
         TrialSettings settings;
         TrialData data;
@@ -110,7 +111,7 @@ namespace Initial_Consonant_Choice
             checkStreak();
             setPhase(0);
 
-            participantScreen = new ExerciseParticipantScreen();
+            participantScreen = new ExerciseParticipantScreen(this);
             participantScreen.Show();
             participantScreen.randomizeFaces();
             participantScreen.enterPhase1();
@@ -196,16 +197,17 @@ namespace Initial_Consonant_Choice
 
         private bool checkStreak()
         {
-            if(isPractice)
+            if (isPractice)
             {
                 return false;
             }
 
-            if(incorrectStreak >= 3)
+            if (incorrectStreak >= 3)
             {
                 alertLabel.Visible = true;
                 alertLabel.Text = "! " + incorrectStreak + " incorrect responses in a row";
-            } else
+            }
+            else
             {
                 alertLabel.Visible = false;
             }
@@ -225,7 +227,7 @@ namespace Initial_Consonant_Choice
                     tes.Show();
                     quit();
                 }
-                
+
                 return true;
             }
             return false;
@@ -338,6 +340,22 @@ namespace Initial_Consonant_Choice
             TrialEndScreen tes = new TrialEndScreen(data);
             tes.Show();
             quit();
+        }
+
+        private void progressButton_Click(object sender, EventArgs e)
+        {
+            if(!inReinforcement)
+            {
+                enableButtons(false);
+                participantScreen.beginReinforcement(curExercise + 1, exercises.Count);
+                progressButton.Text = "Back To Exercises";
+            } else
+            {
+                participantScreen.endReinforcement();
+                enableButtons(true);
+                progressButton.Text = "Show Progress";
+            }
+            inReinforcement = !inReinforcement;
         }
     }
 }

@@ -46,6 +46,7 @@
             beginButton = new Button();
             currentScoreLabel = new Label();
             alertLabel = new Label();
+            progressButton = new Button();
             phase1Panel.SuspendLayout();
             phase2Panel.SuspendLayout();
             phase0Panel.SuspendLayout();
@@ -231,10 +232,21 @@
             alertLabel.Text = "! 1 Consecutive Incorrect Responses";
             alertLabel.Visible = false;
             // 
+            // progressButton
+            // 
+            progressButton.Location = new Point(89, 366);
+            progressButton.Name = "progressButton";
+            progressButton.Size = new Size(138, 30);
+            progressButton.TabIndex = 21;
+            progressButton.Text = "Show Progress";
+            progressButton.UseVisualStyleBackColor = true;
+            progressButton.Click += progressButton_Click;
+            // 
             // ExerciseFacilitator
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressButton);
             Controls.Add(alertLabel);
             Controls.Add(currentScoreLabel);
             Controls.Add(phase0Panel);
@@ -276,5 +288,6 @@
         private Button beginButton;
         private Label currentScoreLabel;
         private Label alertLabel;
+        public Button progressButton;
     }
 }
