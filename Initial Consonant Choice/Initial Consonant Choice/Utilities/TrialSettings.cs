@@ -24,6 +24,15 @@ namespace Initial_Consonant_Choice.Utilities
             this.stimulusDelay = stimulusDelay;
         }
 
+        public TrialSettings()
+        {
+            this.participantID = "0";
+            this.practice = false;
+            this.idResponse = false;
+            this.idCorrect = false;
+            this.stimulusDelay = 500;
+        }
+
 
     }
 }

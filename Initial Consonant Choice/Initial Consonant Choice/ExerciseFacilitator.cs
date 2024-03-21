@@ -105,10 +105,6 @@ namespace Initial_Consonant_Choice
 
             this.settings = settings;
             this.data = data;
-            if (isPractice)
-            {
-                data.practiceTrialsRequired++;
-            }
 
             setLabels();
             checkStreak();
@@ -169,16 +165,16 @@ namespace Initial_Consonant_Choice
             {
                 if (isPractice)
                 {
-                    PracticeEndScreen endScreen = new PracticeEndScreen(data.numCorrect);
                     data.finishPractice();
-                    endScreen.ShowDialog();
-                    this.Close();
+                    PracticeEndScreen endScreen = new PracticeEndScreen(data, settings);
+                    endScreen.Show();
+                    quit();
                 }
                 else
                 {
                     TrialEndScreen endScreen = new TrialEndScreen(data);
-                    endScreen.ShowDialog();
-                    this.Close();
+                    endScreen.Show();
+                    quit();
                 }
             }
             else
@@ -194,8 +190,6 @@ namespace Initial_Consonant_Choice
         {
             participantScreen.FormClosing -= FormUtils.HandleFormClosing;
             participantScreen.Close();
-            TrialEndScreen tes = new TrialEndScreen(data);
-            tes.Show();
             this.FormClosing -= FormUtils.HandleFormClosing;
             this.Close();
         }
@@ -227,6 +221,8 @@ namespace Initial_Consonant_Choice
                 // If the no button was pressed ...
                 if (result == DialogResult.Yes)
                 {
+                    TrialEndScreen tes = new TrialEndScreen(data);
+                    tes.Show();
                     quit();
                 }
                 
@@ -269,7 +265,7 @@ namespace Initial_Consonant_Choice
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             oneButton.BackColor = default(Color);
-            twoButton.UseVisualStyleBackColor = true;
+            oneButton.UseVisualStyleBackColor = true;
             data.childResponse[curExercise] = exercises[curExercise].choices[0];
             nextExercise();
         }
@@ -313,7 +309,7 @@ namespace Initial_Consonant_Choice
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             threeButton.BackColor = default(Color);
-            twoButton.UseVisualStyleBackColor = true;
+            threeButton.UseVisualStyleBackColor = true;
             data.childResponse[curExercise] = exercises[curExercise].choices[2];
             nextExercise();
         }
@@ -339,6 +335,8 @@ namespace Initial_Consonant_Choice
 
         private void quitButton_Click(object sender, EventArgs e)
         {
+            TrialEndScreen tes = new TrialEndScreen(data);
+            tes.Show();
             quit();
         }
     }

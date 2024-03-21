@@ -50,7 +50,7 @@ namespace Initial_Consonant_Choice.Utilities
             output.AppendLine(string.Join(separator, isiLine));
 
             // Is this out of 48 or numAttempted?
-            string[] scoreLine = { "Test Score", numCorrect.ToString() + "/48" };
+            string[] scoreLine = { "Test Score", "\"" + numCorrect.ToString() + "/48\"" };
             output.AppendLine(string.Join(separator, scoreLine));
 
             string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats" };

@@ -34,8 +34,8 @@ namespace Initial_Consonant_Choice.Utilities
 
         public void finishPractice()
         {
+            practiceScores[practiceTrialsRequired] = numCorrect;
             practiceTrialsRequired++;
-            practiceScores[0] = numCorrect;
             numCorrect = 0;
             numAttempted = 0;
 
@@ -44,6 +44,11 @@ namespace Initial_Consonant_Choice.Utilities
             childResponse = new string[48];
             correctResponse = new string[48];
             trialStimulusRepeats = new int[48];
+        }
+
+        public int getLastPracticeScore()
+        {
+            return practiceScores[practiceTrialsRequired - 1];
         }
         
     }
