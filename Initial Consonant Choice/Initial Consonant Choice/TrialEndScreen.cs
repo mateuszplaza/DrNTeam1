@@ -23,6 +23,7 @@ namespace Initial_Consonant_Choice
             this.data = data;
             SaveAndQuitButton.Enabled = false;
             SaveAndReturnButton.Enabled = false;
+            FilePathTextbox.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             this.FormClosing += FormUtils.HandleFormClosing;
         }
 

@@ -34,7 +34,7 @@ namespace Initial_Consonant_Choice
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PracticeEndScreen pes = new PracticeEndScreen(4);
+            PracticeEndScreen pes = new PracticeEndScreen(new TrialData(), new TrialSettings());
             pes.Show();
         }
 

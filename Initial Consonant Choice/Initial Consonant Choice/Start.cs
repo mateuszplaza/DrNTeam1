@@ -21,6 +21,7 @@ namespace Initial_Consonant_Choice
         {
             Setup setup = new Setup();
             setup.Show();
+            this.Close();
         }
     }
 }

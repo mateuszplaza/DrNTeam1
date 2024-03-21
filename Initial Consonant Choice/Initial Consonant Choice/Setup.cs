@@ -38,12 +38,15 @@ namespace Initial_Consonant_Choice
             // Initialize Trial Settings
             settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi);
             TrialData data = new TrialData();
+            data.interstimulusInterval = isi;
             data.participantID = int.Parse(participantID);
             data.interstimulusInterval = isi;
 
             // Start practice or trials
             ExerciseFacilitator fac = new ExerciseFacilitator(practice, settings, data);
             fac.Show();
+            this.FormClosing -= FormUtils.HandleFormClosing;
+            this.Close();
         }
 
         // Cancel Button
@@ -51,6 +54,8 @@ namespace Initial_Consonant_Choice
         {
             Start start = new Start();
             start.Show();
+            this.FormClosing -= FormUtils.HandleFormClosing;
+            this.Close();
         }
     }
 }

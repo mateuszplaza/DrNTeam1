@@ -12,25 +12,31 @@ namespace Initial_Consonant_Choice
 
     public partial class PracticeEndScreen : Form
     {
-        private int participantScore = 0;  // Variable to hold participant's score
-        private FlowLayoutPanel buttonPanel;
-        private Label textview;
-        static bool practiceAgain = true;
+        TrialData data;
+        TrialSettings settings;
 
 
-        public PracticeEndScreen(int participantScore)
+        public PracticeEndScreen(TrialData data, TrialSettings settings)
         {
             InitializeComponent();
-            this.participantScore = participantScore;
+            this.data = data;
+            this.settings = settings;
             DisplayScore();
-            PracticeAgainButton.Enabled = practiceAgain;
+            if(data.practiceTrialsRequired >= 3)
+            {
+                PracticeAgainButton.Enabled = false;
+            }
+            else
+            {
+                PracticeAgainButton.Enabled = true;
+            }
             this.FormClosing += FormUtils.HandleFormClosing;
         }
 
         private void DisplayScore()
         {
             // Display participant's score
-            this.ParticipantScoreLabel.Text = $"Participant score: {participantScore}/6";
+            this.ParticipantScoreLabel.Text = $"Participant score: {data.getLastPracticeScore()}/6";
         }
 
         private void PracticeEndScreen_Load(object sender, EventArgs e)
@@ -45,17 +51,18 @@ namespace Initial_Consonant_Choice
 
         private void ContinueButton_Click(object sender, EventArgs e)
         {
-            ExerciseFacilitator fac = new ExerciseFacilitator(false, new TrialSettings("", true, false, false, 1000), new TrialData());
-            this.Hide();
-            fac.ShowDialog();
+            ExerciseFacilitator fac = new ExerciseFacilitator(false, settings, data);
+            fac.Show();
+            this.FormClosing -= FormUtils.HandleFormClosing;
+            this.Close();
         }
 
         private void PracticeAgainButton_Click(object sender, EventArgs e)
         {
-            practiceAgain = false;
-            ExerciseFacilitator fac = new ExerciseFacilitator(true, new TrialSettings("", true, false, false, 1000), new TrialData());
-            this.Hide();
-            fac.ShowDialog();
+            ExerciseFacilitator fac = new ExerciseFacilitator(true, settings, data);
+            fac.Show();
+            this.FormClosing -= FormUtils.HandleFormClosing;
+            this.Close();
         }
     }
 }
