@@ -11,6 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Faces\Face One-green.jpg" />
+    <None Remove="Faces\Face One-red.jpg" />
+    <None Remove="Faces\Face Three-green.jpg" />
+    <None Remove="Faces\Face Three-red.jpg" />
+    <None Remove="Faces\Face Two-green.jpg" />
+    <None Remove="Faces\Face Two-red.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MSTest.TestFramework" Version="3.0.4" />
     <PackageReference Include="System.Speech" Version="8.0.0" />
   </ItemGroup>

@@ -158,9 +158,9 @@
         #endregion
 
         private Panel basePanel;
-        public PictureBox pictureBox3;
-        public PictureBox pictureBox2;
-        public PictureBox pictureBox1;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
         private Panel reinforcementPanel;
         private PictureBox horseImage;
         private PictureBox pictureBox5;

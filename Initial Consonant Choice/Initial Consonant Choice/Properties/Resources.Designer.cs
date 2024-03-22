@@ -2027,26 +2027,6 @@ namespace Initial_Consonant_Choice.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap face_1_green {
-            get {
-                object obj = ResourceManager.GetObject("face_1_green", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap face_1_red {
-            get {
-                object obj = ResourceManager.GetObject("face_1_red", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap face_2 {
             get {
                 object obj = ResourceManager.GetObject("face_2", resourceCulture);
@@ -2067,26 +2047,6 @@ namespace Initial_Consonant_Choice.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap face_2_green {
-            get {
-                object obj = ResourceManager.GetObject("face_2_green", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap face_2_red {
-            get {
-                object obj = ResourceManager.GetObject("face_2_red", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap face_3 {
             get {
                 object obj = ResourceManager.GetObject("face_3", resourceCulture);
@@ -2100,26 +2060,6 @@ namespace Initial_Consonant_Choice.Properties {
         internal static System.Drawing.Bitmap face_3_dim {
             get {
                 object obj = ResourceManager.GetObject("face_3_dim", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap face_3_green {
-            get {
-                object obj = ResourceManager.GetObject("face_3_green", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap face_3_red {
-            get {
-                object obj = ResourceManager.GetObject("face_3_red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
