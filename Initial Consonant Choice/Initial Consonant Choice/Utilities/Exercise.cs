@@ -10,6 +10,7 @@ namespace Initial_Consonant_Choice.Utilities
     {
         public String promptWord;
         public String[] choices;
+        public int[] choiceOrder = new int[] { 1, 2, 3 };
         public String correctChoice;
         public int correctChoiceIndex;
 
@@ -18,6 +19,7 @@ namespace Initial_Consonant_Choice.Utilities
             this.promptWord = promptWord;
             this.choices = choices;
             this.correctChoice = correctChoice;
+            shuffleChoices();
             this.correctChoiceIndex = Array.IndexOf(choices, correctChoice);
         }
 
@@ -26,7 +28,8 @@ namespace Initial_Consonant_Choice.Utilities
             this.promptWord = promptWord;
             this.choices = choices;
             this.correctChoice = choices[correctChoiceIndex];
-            this.correctChoiceIndex = correctChoiceIndex;
+            shuffleChoices();
+            this.correctChoiceIndex = Array.IndexOf(choices, correctChoice);
         }
 
         public Exercise(String promptWord, String choice1, String choice2, String choice3, String correctChoice)
@@ -34,7 +37,23 @@ namespace Initial_Consonant_Choice.Utilities
             this.promptWord = promptWord;
             this.choices = new String[] { choice1, choice2, choice3 };
             this.correctChoice = correctChoice;
+            shuffleChoices();
             this.correctChoiceIndex = Array.IndexOf(choices, correctChoice);
+        }
+
+        public void shuffleChoices()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < choices.Length; i++)
+            {
+                int randomIndex = rand.Next(choices.Length);
+                String temp = choices[i];
+                int tempOrder = choiceOrder[i];
+                choices[i] = choices[randomIndex];
+                choiceOrder[i] = choiceOrder[randomIndex];
+                choices[randomIndex] = temp;
+                choiceOrder[randomIndex] = tempOrder;
+            }
         }
     }
 

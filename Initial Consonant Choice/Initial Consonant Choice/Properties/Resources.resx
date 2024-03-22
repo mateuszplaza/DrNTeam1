@@ -814,4 +814,31 @@
   <data name="_9_3_price" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\9_3_price.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="cheer_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cheer_audio.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="confetti_glitter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\confetti-glitter.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flag_wave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag_wave.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flag_wave_crop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flag_wave_crop.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="horse_gallop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\horse_gallop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="horse_gallop_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\horse_gallop_audio.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="horse_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\horse_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nature_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nature_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

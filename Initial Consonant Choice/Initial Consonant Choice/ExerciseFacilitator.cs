@@ -24,7 +24,7 @@ namespace Initial_Consonant_Choice
         ExerciseParticipantScreen participantScreen;
         AudioManager audioManager;
 
-        const int FEEDBACK_TIME = 200;
+        const int FEEDBACK_TIME = 500;
 
         public void setPhase(int phase)
         {
@@ -116,6 +116,14 @@ namespace Initial_Consonant_Choice
             participantScreen.randomizeFaces();
             participantScreen.enterPhase1();
 
+            if (!isPractice)
+            {
+                inReinforcement = true;
+                enableButtons(false);
+                participantScreen.beginReinforcement(0, exercises.Count);
+                progressButton.Text = "Ready For Exercises";
+            }
+
             audioManager = new AudioManager();
         }
 
@@ -136,15 +144,15 @@ namespace Initial_Consonant_Choice
             enableButtons(false);
 
             participantScreen.setSpeaker(1);
-            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, 1, isPractice));
+            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, exercises[curExercise].choiceOrder[0], isPractice));
             participantScreen.setSpeaker(-1);
             await Task.Run(() => Thread.Sleep(settings.stimulusDelay));
             participantScreen.setSpeaker(2);
-            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, 2, isPractice));
+            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, exercises[curExercise].choiceOrder[1], isPractice));
             participantScreen.setSpeaker(-1);
             await Task.Run(() => Thread.Sleep(settings.stimulusDelay));
             participantScreen.setSpeaker(3);
-            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, 3, isPractice));
+            await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, exercises[curExercise].choiceOrder[2], isPractice));
             participantScreen.setSpeaker(-1);
             await Task.Run(() => Thread.Sleep(settings.stimulusDelay));
             participantScreen.setSpeaker(-1);
@@ -155,6 +163,11 @@ namespace Initial_Consonant_Choice
         public void nextExercise()
         {
             data.numAttempted++;
+            if(!isPractice && (data.numAttempted % settings.reinforcementFrequency == 0) && data.numAttempted != exercises.Count)
+            {
+                progressButton_Click(null, null);
+            }
+
             data.correctResponse[curExercise] = exercises[curExercise].correctChoice;
             if (data.childResponse[curExercise] == data.correctResponse[curExercise])
             {
@@ -173,9 +186,10 @@ namespace Initial_Consonant_Choice
                 }
                 else
                 {
-                    TrialEndScreen endScreen = new TrialEndScreen(data);
-                    endScreen.Show();
-                    quit();
+                    progressButton.Text = "Continue to Exit";
+                    inReinforcement = true;
+                    enableButtons(false);
+                    participantScreen.beginReinforcement(exercises.Count, exercises.Count);
                 }
             }
             else
@@ -265,6 +279,14 @@ namespace Initial_Consonant_Choice
                 checkStreak();
             }
 
+            if(isPractice && settings.idCorrect)
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            } else if (!isPractice && settings.idResponse)
+            {
+                participantScreen.setSpeaker(1);
+            }
+
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             oneButton.BackColor = default(Color);
             oneButton.UseVisualStyleBackColor = true;
@@ -287,6 +309,15 @@ namespace Initial_Consonant_Choice
                 checkStreak();
             }
 
+            if (isPractice && settings.idCorrect)
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            }
+            else if (!isPractice && settings.idResponse)
+            {
+                participantScreen.setSpeaker(2);
+            }
+
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             twoButton.BackColor = default(Color);
             twoButton.UseVisualStyleBackColor = true;
@@ -307,6 +338,15 @@ namespace Initial_Consonant_Choice
                 threeButton.BackColor = Color.PaleVioletRed;
                 incorrectStreak++;
                 checkStreak();
+            }
+
+            if (isPractice && settings.idCorrect)
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            }
+            else if (!isPractice && settings.idResponse)
+            {
+                participantScreen.setSpeaker(3);
             }
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
@@ -344,17 +384,25 @@ namespace Initial_Consonant_Choice
 
         private void progressButton_Click(object sender, EventArgs e)
         {
-            if(!inReinforcement)
+            if (!inReinforcement)
             {
                 enableButtons(false);
                 participantScreen.beginReinforcement(curExercise + 1, exercises.Count);
                 progressButton.Text = "Back To Exercises";
-            } else
+            } 
+            else if(progressButton.Text == "Continue to Exit") 
+            {
+                TrialEndScreen endScreen = new TrialEndScreen(data);
+                endScreen.Show();
+                quit();
+            }
+            else
             {
                 participantScreen.endReinforcement();
                 enableButtons(true);
                 progressButton.Text = "Show Progress";
             }
+
             inReinforcement = !inReinforcement;
         }
     }

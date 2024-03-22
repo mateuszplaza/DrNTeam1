@@ -51,6 +51,9 @@ namespace Initial_Consonant_Choice
                     c.Location = new Point(xLocations[i] * basePanel.Width / BASE_WIDTH, yLocations[i] * basePanel.Height / BASE_HEIGHT);
                 }
 
+                bool wasHorseVisible = reinforcementPanel.Visible;
+                reinforcementPanel.Visible = false;
+
                 // Horse Panel
                 reinforcementPanel.Width = basePanel.Width;
                 reinforcementPanel.Height = basePanel.Height;
@@ -65,6 +68,11 @@ namespace Initial_Consonant_Choice
                     c.Location = new Point(xLocations[i + baseCount] * reinforcementPanel.Width / BASE_WIDTH, yLocations[i + baseCount] * reinforcementPanel.Height / BASE_HEIGHT);
                 }
 
+                if (wasHorseVisible)
+                {
+                    reinforcementPanel.Visible = true;
+                }
+
             }
             
         }
@@ -72,6 +80,7 @@ namespace Initial_Consonant_Choice
         public void randomizeFaces()
         {
             Random rand = new Random();
+            faceNums.Clear();
             faceNums.AddRange(Enumerable.Range(1, 7)
                                .OrderBy(i => rand.Next())
                                .Take(3));
@@ -86,6 +95,10 @@ namespace Initial_Consonant_Choice
             pictureBox1.Visible = false;
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;
+
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
         }
 
         public void enterPhase2()
@@ -94,6 +107,10 @@ namespace Initial_Consonant_Choice
             pictureBox1.Visible = true;
             pictureBox2.Visible = true;
             pictureBox3.Visible = true;
+
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
         }
 
         public void setSpeaker(int speaker)
@@ -117,19 +134,32 @@ namespace Initial_Consonant_Choice
         {
             basePanel.Visible = false;
             reinforcementPanel.Visible = true;
+            this.BackColor = Color.LimeGreen;
 
             float progress = (float)completed / total;
             int start = trackImage.Location.X;
             int finalX = start + (int)(progress * trackImage.Width) - horseImage.Width;
 
             int numIncrements = REINFORCEMENT_DURATION / 10;
-            int increment = (finalX - start) / numIncrements;
-            increment = increment == 0 ? 1 : increment;
+            AudioManager audioManager = new AudioManager();
+            audioManager.StartHorseSound();
+
+            int increment = (int) Math.Ceiling((double)this.Width / 850);
 
             while(horseImage.Location.X < finalX)
             {
                 horseImage.Location = new Point(horseImage.Location.X + increment, horseImage.Location.Y);
+                horseImage.Update();
                 await Task.Run(() => Task.Delay(10));
+            }
+
+            audioManager.StopSound();
+
+            if(completed == total)
+            {
+                //flagImage.Image = Properties.Resources.flag_wave_crop;
+                confettiImage.Visible = true;
+                audioManager.PlayCheer();
             }
 
             facilitator.progressButton.Enabled = true;
@@ -137,6 +167,7 @@ namespace Initial_Consonant_Choice
 
         public void endReinforcement()
         {
+            this.BackColor = Color.White;
             basePanel.Visible = true;
             reinforcementPanel.Visible = false;
         }
@@ -146,6 +177,9 @@ namespace Initial_Consonant_Choice
             InitializeComponent();
             this.FormClosing += FormUtils.HandleFormClosing;
             this.facilitator = facilitator;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
         }
 
         private void ExerciseParticipantScreen_Load(object sender, EventArgs e)
@@ -173,6 +207,7 @@ namespace Initial_Consonant_Choice
                 xLocations[i + numControls] = reinforcementPanel.Controls[i].Location.X;
                 yLocations[i + numControls] = reinforcementPanel.Controls[i].Location.Y;
             }
+            confettiImage.Visible = false;
             reinforcementPanel.Visible = false;
 
             initialized = true;

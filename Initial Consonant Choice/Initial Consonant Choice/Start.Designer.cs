@@ -72,5 +72,6 @@
 
         private Label label1;
         private Button button1;
+        private PictureBox pictureBox1;
     }
 }

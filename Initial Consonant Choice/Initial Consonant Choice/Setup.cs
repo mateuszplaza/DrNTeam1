@@ -34,13 +34,13 @@ namespace Initial_Consonant_Choice
             bool idResponse = checkBox2.Checked;
             bool idCorrect = checkBox3.Checked;
             int isi = (int)numericUpDown1.Value;
+            int rf = (int)numericUpDown2.Value;
 
             // Initialize Trial Settings
-            settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi);
+            settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi, rf);
             TrialData data = new TrialData();
             data.interstimulusInterval = isi;
             data.participantID = participantID;
-            data.interstimulusInterval = isi;
 
             // Start practice or trials
             ExerciseFacilitator fac = new ExerciseFacilitator(practice, settings, data);
