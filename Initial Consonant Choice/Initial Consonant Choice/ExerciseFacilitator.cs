@@ -24,7 +24,7 @@ namespace Initial_Consonant_Choice
         ExerciseParticipantScreen participantScreen;
         AudioManager audioManager;
 
-        const int FEEDBACK_TIME = 200;
+        const int FEEDBACK_TIME = 400;
 
         public void setPhase(int phase)
         {
@@ -265,6 +265,16 @@ namespace Initial_Consonant_Choice
                 checkStreak();
             }
 
+            // Provide feedback to participant of selected speaker
+            if (isPractice) 
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            }
+            else 
+            {
+                participantScreen.setSpeaker(1);
+            }
+
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             oneButton.BackColor = default(Color);
             oneButton.UseVisualStyleBackColor = true;
@@ -287,6 +297,16 @@ namespace Initial_Consonant_Choice
                 checkStreak();
             }
 
+            // Provide feedback to participant of selected speaker
+            if (isPractice)
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            }
+            else
+            {
+                participantScreen.setSpeaker(2);
+            }
+
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             twoButton.BackColor = default(Color);
             twoButton.UseVisualStyleBackColor = true;
@@ -307,6 +327,16 @@ namespace Initial_Consonant_Choice
                 threeButton.BackColor = Color.PaleVioletRed;
                 incorrectStreak++;
                 checkStreak();
+            }
+
+            // Provide feedback to participant of selected speaker
+            if (isPractice)
+            {
+                participantScreen.setSpeaker(exercises[curExercise].correctChoiceIndex + 1);
+            }
+            else
+            {
+                participantScreen.setSpeaker(3);
             }
 
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
