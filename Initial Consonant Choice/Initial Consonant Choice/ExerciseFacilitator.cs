@@ -116,7 +116,7 @@ namespace Initial_Consonant_Choice
             participantScreen.randomizeFaces();
             participantScreen.enterPhase1();
 
-            audioManager = new AudioManager(@"..\..\..\..\..\audio_files");
+            audioManager = new AudioManager();
         }
 
         public async void phase1()

@@ -1,29 +1,40 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Initial_Consonant_Choice.Utilities
 {
     public class AudioManager
     {
-        private String audioPath = "";
         //Maps a tuple containing the trial number and word index to a string containing the word
         private Dictionary<Tuple<int, int>, String> wordMap = new Dictionary<Tuple<int, int>, String>();
 
         //Constructor that takes a path to the folder containing the audio files and builds the wordMap
-        public AudioManager(String audioPath)
+        public AudioManager()
         {
-            this.audioPath = audioPath;
-            string[] files = Directory.GetFiles(audioPath, "*.wav", SearchOption.TopDirectoryOnly);
-            foreach (string file in files)
+            var resourceManager = Properties.Resources.ResourceManager;
+            var resourceSet = resourceManager.GetResourceSet(CultureInfo.InvariantCulture, createIfNotExists: true, tryParents: true);
+
+            foreach (DictionaryEntry entry in resourceSet)
             {
-                string fileName = file.Substring(file.LastIndexOf('\\') + 1);
-                string[] fileNameSplit = fileName.Split('_');
-                Tuple<int, int> t = new Tuple<int, int>(Int32.Parse(fileNameSplit[0]), Int32.Parse(fileNameSplit[1]));
-                wordMap.Add(t, fileNameSplit[2].Substring(0, fileNameSplit[2].Length-4));
+                string[] fileNameSplit = entry.Key.ToString().Split('_');
+                if (fileNameSplit.Length == 4 && fileNameSplit[0] == "") //Audio resources start with _ and have 3 underlines
+                {
+                    try
+                    {
+                        Tuple<int, int> t = new Tuple<int, int>(Int32.Parse(fileNameSplit[1]), Int32.Parse(fileNameSplit[2]));
+                        wordMap.Add(t, fileNameSplit[3]);
+                    } catch //In case non-audio files pass the if statement
+                    {
+                        Console.WriteLine(entry.Key.ToString());
+                    }
+                }
             }
         }
         //Given a trial number and word index, play the given sound.
@@ -33,7 +44,7 @@ namespace Initial_Consonant_Choice.Utilities
             {
                 trial += 100;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(audioPath + "\\" + trial + "_" + index + "_" + wordMap[new Tuple<int, int>(trial, index)] + ".wav");
+            SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
             soundPlayer.Play();
         }
 
@@ -44,7 +55,7 @@ namespace Initial_Consonant_Choice.Utilities
             {
                 trial += 100;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(audioPath + "\\" + trial + "_" + index + "_" + wordMap[new Tuple<int, int>(trial, index)] + ".wav");
+            SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
             soundPlayer.PlaySync();
         }
     }
