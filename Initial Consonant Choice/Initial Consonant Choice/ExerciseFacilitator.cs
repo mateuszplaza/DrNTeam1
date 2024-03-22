@@ -255,12 +255,14 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 0)
             {
                 oneButton.BackColor = Color.PaleGreen;
+                participantScreen.pictureBox1.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_1_green");
                 incorrectStreak = 0;
                 checkStreak();
             }
             else
             {
                 oneButton.BackColor = Color.PaleVioletRed;
+                participantScreen.pictureBox1.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_1_red");
                 incorrectStreak++;
                 checkStreak();
             }
@@ -277,12 +279,14 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 1)
             {
                 twoButton.BackColor = Color.PaleGreen;
+                participantScreen.pictureBox2.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_2_green");
                 incorrectStreak = 0;
                 checkStreak();
             }
             else
             {
                 twoButton.BackColor = Color.PaleVioletRed;
+                participantScreen.pictureBox2.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_2_red");
                 incorrectStreak++;
                 checkStreak();
             }
@@ -299,12 +303,14 @@ namespace Initial_Consonant_Choice
             if (exercises[curExercise].correctChoiceIndex == 2)
             {
                 threeButton.BackColor = Color.PaleGreen;
+                participantScreen.pictureBox3.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_3_green");
                 incorrectStreak = 0;
                 checkStreak();
             }
             else
             {
                 threeButton.BackColor = Color.PaleVioletRed;
+                participantScreen.pictureBox3.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_3_red");
                 incorrectStreak++;
                 checkStreak();
             }
