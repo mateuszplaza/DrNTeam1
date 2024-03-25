@@ -12,6 +12,8 @@ namespace Initial_Consonant_Choice.Utilities
 {
     public class AudioManager
     {
+        SoundPlayer soundPlayer;
+
         //Maps a tuple containing the trial number and word index to a string containing the word
         private Dictionary<Tuple<int, int>, String> wordMap = new Dictionary<Tuple<int, int>, String>();
 
@@ -44,7 +46,7 @@ namespace Initial_Consonant_Choice.Utilities
             {
                 trial += 100;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
+            soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
             soundPlayer.Play();
         }
 
@@ -55,8 +57,25 @@ namespace Initial_Consonant_Choice.Utilities
             {
                 trial += 100;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
+            soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"_{trial}_{index}_{wordMap[new Tuple<int, int>(trial, index)]}"));
             soundPlayer.PlaySync();
+        }
+
+        public void StartHorseSound()
+        {
+            soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"horse_gallop_audio"));
+            soundPlayer.Play();
+        }
+
+        public void PlayCheer()
+        {
+            soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"cheer_audio"));
+            soundPlayer.Play();
+        }
+
+        public void StopSound()
+        {
+            soundPlayer.Stop();
         }
     }
 }

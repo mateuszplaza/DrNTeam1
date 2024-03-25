@@ -39,11 +39,11 @@ namespace Initial_Consonant_Choice.Utilities
             string[] practiceLine = { "# Practice Trials", practiceTrialsRequired.ToString() };
             output.AppendLine(string.Join(separator, practiceLine));
             
-            string[] practiceScoresLine = { "Practice Scores", practiceScores[0].ToString() + "/6" };
+            string[] practiceScoresLine = { "Practice Scores", "=\"" + practiceScores[0].ToString() + "/6\"" };
             output.AppendLine(string.Join(separator, practiceScoresLine));
             for (int i = 1; i < practiceTrialsRequired; i++)
             {
-                string newLine = string.Format("{0}, {1}", "", practiceScores[i].ToString() + "/6");
+                string newLine = string.Format("{0}, {1}", "", "=\"" + practiceScores[i].ToString() + "/6\"");
                 output.AppendLine(string.Join(separator, newLine));
             }
 

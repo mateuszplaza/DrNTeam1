@@ -16,7 +16,7 @@ namespace Initial_Consonant_Choice
 
         private void pes_button_Click(object sender, EventArgs e)
         {
-            ExerciseFacilitator fac = new ExerciseFacilitator(false, new TrialSettings("", true, false, false, 500), new TrialData());
+            ExerciseFacilitator fac = new ExerciseFacilitator(false, new TrialSettings("", true, false, false, 500, 6), new TrialData());
             fac.Show();
         }
 
