@@ -22,7 +22,8 @@ namespace Initial_Consonant_Choice.Utilities
         public string[] childResponse = new string[48];
         public string[] correctResponse = new string[48];
         public int[] trialStimulusRepeats = new int[48];
-        
+
+        public string[] responseTime = new string[48];
 
         //Input path to trials and their answers to initialize the correct response array. 
         public TrialData()
@@ -44,7 +45,8 @@ namespace Initial_Consonant_Choice.Utilities
             childResponse = new string[48];
             correctResponse = new string[48];
             trialStimulusRepeats = new int[48];
-        }
+            responseTime = new string[48];
+    }
 
         public int getLastPracticeScore()
         {

@@ -29,6 +29,7 @@ namespace Initial_Consonant_Choice.Utilities
             bool[] targetCorrect = trialData.targetCorrect;
             string[] correctResponse = trialData.correctResponse;
             string[] childResponse = trialData.childResponse;
+            string[] responseTime = trialData.responseTime;
 
             string separator = ",";
             StringBuilder output = new StringBuilder();
@@ -54,12 +55,12 @@ namespace Initial_Consonant_Choice.Utilities
             string[] scoreLine = { "Test Score", "=\"" + numCorrect.ToString() + "/48\"" };
             output.AppendLine(string.Join(separator, scoreLine));
 
-            string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats" };
+            string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats, Response Time" };
             output.AppendLine(string.Join(separator, headings));
             for (int i = 0; i < 48; i++)
             {
                 int trialId = i + 1;
-                string newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}", trialId.ToString(), targetCorrect[i]? "Yes" : "No", trialTargetRepeats[i].ToString(), childResponse[i], correctResponse[i], trialStimulusRepeats[i].ToString());
+                string newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", trialId.ToString(), targetCorrect[i]? "Yes" : "No", trialTargetRepeats[i].ToString(), childResponse[i], correctResponse[i], trialStimulusRepeats[i].ToString(), responseTime[i]);
                 output.AppendLine(string.Join(separator, newLine));
             }
 
