@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Initial_Consonant_Choice.Utilities;
 
@@ -13,6 +14,8 @@ namespace Initial_Consonant_Choice
 {
     public partial class ExerciseFacilitator : Form
     {
+        System.Timers.Timer timer;
+        int timerH, timerM, timerS, timerMS;
         int phase = 0;
         int incorrectStreak = 0;
         bool isPractice;
@@ -125,6 +128,36 @@ namespace Initial_Consonant_Choice
             }
 
             audioManager = new AudioManager();
+
+            timer = new System.Timers.Timer();
+            timer.Interval = 1;
+            timer.Elapsed += OnTimeEvent;
+        }
+
+        private void OnTimeEvent(object sender, ElapsedEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                timerMS += 1;
+                if (timerMS == 100)
+                {
+                    timerMS = 0;
+                    timerS += 1;
+                }
+                if (timerS == 60)
+                {
+                    timerS = 0;
+                    timerM += 1;
+                }
+                if (timerM == 60)
+                {
+                    timerM = 0;
+                    timerH += 1;
+                }
+
+                timerLabel.Text = string.Format("{0}:{1}:{2}:{3}", timerH.ToString().ToString().PadLeft(2,'0'), timerM.ToString().ToString().PadLeft(2, '0'), timerS.ToString().ToString().PadLeft(2, '0'), timerMS.ToString().ToString().PadLeft(2, '0'));
+
+            }));
         }
 
         public async void phase1()
@@ -157,11 +190,16 @@ namespace Initial_Consonant_Choice
             await Task.Run(() => Thread.Sleep(settings.stimulusDelay));
             participantScreen.setSpeaker(-1);
 
+            timer.Start();
+
             enableButtons(true);
         }
 
         public void nextExercise()
         {
+            timer.Stop();
+            data.responseTime[curExercise] = timerLabel.Text;
+
             data.numAttempted++;
             if(!isPractice && (data.numAttempted % settings.reinforcementFrequency == 0) && data.numAttempted != exercises.Count)
             {
@@ -249,6 +287,12 @@ namespace Initial_Consonant_Choice
 
         private void beginButton_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+            timerH = 0;
+            timerM = 0;
+            timerS = 0;
+            timerMS = 0;
+            timerLabel.Text = "00:00:00:00";
             phase1();
         }
 

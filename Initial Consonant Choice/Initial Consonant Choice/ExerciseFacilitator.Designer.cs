@@ -47,6 +47,7 @@
             currentScoreLabel = new Label();
             alertLabel = new Label();
             progressButton = new Button();
+            timerLabel = new Label();
             phase1Panel.SuspendLayout();
             phase2Panel.SuspendLayout();
             phase0Panel.SuspendLayout();
@@ -242,10 +243,21 @@
             progressButton.UseVisualStyleBackColor = true;
             progressButton.Click += progressButton_Click;
             // 
+            // timerLabel
+            // 
+            timerLabel.AutoSize = true;
+            timerLabel.Font = new Font("Segoe UI", 16F);
+            timerLabel.Location = new Point(596, 359);
+            timerLabel.Name = "timerLabel";
+            timerLabel.Size = new Size(124, 30);
+            timerLabel.TabIndex = 22;
+            timerLabel.Text = "00:00:00:00";
+            // 
             // ExerciseFacilitator
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(800, 450);
+            Controls.Add(timerLabel);
             Controls.Add(progressButton);
             Controls.Add(alertLabel);
             Controls.Add(currentScoreLabel);
@@ -289,5 +301,6 @@
         private Label currentScoreLabel;
         private Label alertLabel;
         public Button progressButton;
+        private Label timerLabel;
     }
 }
