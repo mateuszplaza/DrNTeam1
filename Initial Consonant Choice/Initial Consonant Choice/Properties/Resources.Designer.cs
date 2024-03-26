@@ -2232,6 +2232,15 @@ namespace Initial_Consonant_Choice.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream horse_snort_audio {
+            get {
+                return ResourceManager.GetStream("horse_snort_audio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap horse_transparent {

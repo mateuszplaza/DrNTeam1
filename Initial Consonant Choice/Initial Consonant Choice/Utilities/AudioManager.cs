@@ -63,6 +63,11 @@ namespace Initial_Consonant_Choice.Utilities
 
         public void StartHorseSound()
         {
+            soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"horse_snort_audio"));
+            soundPlayer.Play();
+        }
+        public void HorseRunSound()
+        {
             soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"horse_gallop_audio"));
             soundPlayer.Play();
         }
