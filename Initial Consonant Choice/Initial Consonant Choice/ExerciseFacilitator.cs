@@ -126,6 +126,12 @@ namespace Initial_Consonant_Choice
                 enableButtons(false);
                 participantScreen.beginReinforcement(0, exercises.Count);
                 progressButton.Text = "Ready For Trials";
+                label1.Text = "Testing - Facilitator";
+            }
+            else 
+            {
+                participantScreen.endReinforcement();
+                label1.Text = "Practice - Facilitator";
             }
 
             audioManager = new AudioManager();

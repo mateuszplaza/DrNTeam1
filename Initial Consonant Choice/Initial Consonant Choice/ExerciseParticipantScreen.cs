@@ -144,13 +144,14 @@ namespace Initial_Consonant_Choice
             AudioManager audioManager = new AudioManager();
             audioManager.StartHorseSound();
 
-            int increment = (int) Math.Ceiling((double)this.Width / 850);
+            int increment = (int) Math.Ceiling((double)this.Width / 8500);
 
-            while(horseImage.Location.X < finalX)
+            while (horseImage.Location.X < finalX)
             {
+                BeginControlUpdate(horseImage);
                 horseImage.Location = new Point(horseImage.Location.X + increment, horseImage.Location.Y);
-                horseImage.Update();
-                await Task.Run(() => Task.Delay(10));
+                EndControlUpdate(horseImage);
+                await Task.Run(() => Task.Delay(1));
             }
 
             audioManager.StopSound();
@@ -163,6 +164,31 @@ namespace Initial_Consonant_Choice
             }
 
             facilitator.progressButton.Enabled = true;
+        }
+
+        private const int WM_SETREDRAW = 11;
+
+        public static void BeginControlUpdate(Control control)
+        {
+            Message msgSuspendUpdate = Message.Create(control.Handle, WM_SETREDRAW, IntPtr.Zero,
+                  IntPtr.Zero);
+
+            NativeWindow window = NativeWindow.FromHandle(control.Handle);
+            window.DefWndProc(ref msgSuspendUpdate);
+            control.Invalidate();
+        }
+
+        public static void EndControlUpdate(Control control)
+        {
+            // Create a C "true" boolean as an IntPtr
+            IntPtr wparam = new IntPtr(1);
+            Message msgResumeUpdate = Message.Create(control.Handle, WM_SETREDRAW, wparam,
+                  IntPtr.Zero);
+
+            NativeWindow window = NativeWindow.FromHandle(control.Handle);
+            window.DefWndProc(ref msgResumeUpdate);
+            control.Invalidate();
+            control.Refresh();
         }
 
         public void endReinforcement()
