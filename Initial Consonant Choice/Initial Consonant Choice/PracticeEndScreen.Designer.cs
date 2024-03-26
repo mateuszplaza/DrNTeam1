@@ -106,7 +106,7 @@
             ContinueButton.Name = "ContinueButton";
             ContinueButton.Size = new Size(131, 50);
             ContinueButton.TabIndex = 3;
-            ContinueButton.Text = "Continue To Exercises";
+            ContinueButton.Text = "Continue To Trials";
             ContinueButton.UseVisualStyleBackColor = true;
             ContinueButton.Click += ContinueButton_Click;
             // 

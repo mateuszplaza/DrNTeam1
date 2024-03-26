@@ -63,8 +63,9 @@ namespace Initial_Consonant_Choice
             twoButton.Text = "2: " + exercises[curExercise].choices[1];
             threeButton.Text = "3: " + exercises[curExercise].choices[2];
 
-            exerciseNumLabel.Text = "Exercise " + (curExercise + 1) + " / " + exercises.Count;
+            exerciseNumLabel.Text = "Trial " + (curExercise + 1) + " / " + exercises.Count;
             currentScoreLabel.Text = "Current Score: " + data.numCorrect + " / " + data.numAttempted;
+
         }
 
         public void enableButtons(bool enable)
@@ -121,7 +122,7 @@ namespace Initial_Consonant_Choice
                 inReinforcement = true;
                 enableButtons(false);
                 participantScreen.beginReinforcement(0, exercises.Count);
-                progressButton.Text = "Ready For Exercises";
+                progressButton.Text = "Ready For Trials";
             }
 
             audioManager = new AudioManager();
@@ -134,6 +135,8 @@ namespace Initial_Consonant_Choice
             enableButtons(false);
             await Task.Run(() => audioManager.PlaySoundSync(curExercise + 1, 0, isPractice));
             enableButtons(true);
+            phase1Panel.Controls.Add(incorrectButton);
+            phase1Panel.Controls.Add(correctButton);
             participantScreen.setSpeaker(-1);
         }
 
@@ -158,6 +161,14 @@ namespace Initial_Consonant_Choice
             participantScreen.setSpeaker(-1);
 
             enableButtons(true);
+        }
+
+        public void awaitPhase2() 
+        {
+            phase1Panel.Controls.Remove(incorrectButton);
+            phase1Panel.Controls.Remove(correctButton);
+            beginButton.Text = "Continue Trial";
+            phase1Panel.Controls.Add(beginButton);
         }
 
         public void nextExercise()
@@ -198,6 +209,8 @@ namespace Initial_Consonant_Choice
                 participantScreen.randomizeFaces();
                 participantScreen.enterPhase1();
                 setPhase(0);
+                beginButton.Text = "Begin Trial";
+                phase0Panel.Controls.Add(beginButton);
             }
         }
 
@@ -249,19 +262,26 @@ namespace Initial_Consonant_Choice
 
         private void beginButton_Click(object sender, EventArgs e)
         {
-            phase1();
+            if (phase == 0)
+            {
+                phase1();
+            }
+            else
+            {
+                phase2();
+            }
         }
 
         private void correctButton_Click(object sender, EventArgs e)
         {
             data.targetCorrect[curExercise] = true;
-            phase2();
+            awaitPhase2();
         }
 
         private void incorrectButton_Click(object sender, EventArgs e)
         {
             data.targetCorrect[curExercise] = false;
-            phase2();
+            awaitPhase2();
         }
 
         private async void oneButton_Click(object sender, EventArgs e)
@@ -388,7 +408,7 @@ namespace Initial_Consonant_Choice
             {
                 enableButtons(false);
                 participantScreen.beginReinforcement(curExercise + 1, exercises.Count);
-                progressButton.Text = "Back To Exercises";
+                progressButton.Text = "Back To Trials";
             } 
             else if(progressButton.Text == "Continue to Exit") 
             {

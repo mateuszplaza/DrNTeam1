@@ -54,7 +54,7 @@ namespace Initial_Consonant_Choice.Utilities
             string[] scoreLine = { "Test Score", "=\"" + numCorrect.ToString() + "/48\"" };
             output.AppendLine(string.Join(separator, scoreLine));
 
-            string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Exercise Repeats" };
+            string[] headings = { "Question #", "Target Correct?", "Target Repeats", "Participant Response", "Correct Response", "Trial Repeats" };
             output.AppendLine(string.Join(separator, headings));
             for (int i = 0; i < 48; i++)
             {

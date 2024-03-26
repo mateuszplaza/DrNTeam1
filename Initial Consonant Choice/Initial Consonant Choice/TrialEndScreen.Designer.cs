@@ -178,7 +178,7 @@
             Title.Name = "Title";
             Title.Size = new Size(295, 45);
             Title.TabIndex = 8;
-            Title.Text = "Exercises Complete";
+            Title.Text = "Trials Complete";
             // 
             // TrialEndScreen
             // 

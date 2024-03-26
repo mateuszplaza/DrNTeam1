@@ -206,7 +206,7 @@
             beginButton.Name = "beginButton";
             beginButton.Size = new Size(152, 54);
             beginButton.TabIndex = 0;
-            beginButton.Text = "Begin Exercise";
+            beginButton.Text = "Begin Trial";
             beginButton.UseVisualStyleBackColor = true;
             beginButton.Click += beginButton_Click;
             // 
@@ -260,7 +260,7 @@
             Controls.Add(exerciseNumLabel);
             Controls.Add(label1);
             Name = "ExerciseFacilitator";
-            Text = "ExerciseFacilitator";
+            Text = "Trial Facilitator";
             phase1Panel.ResumeLayout(false);
             phase2Panel.ResumeLayout(false);
             phase0Panel.ResumeLayout(false);
