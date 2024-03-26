@@ -81,6 +81,7 @@ namespace Initial_Consonant_Choice
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.Window;
             textBox1.Location = new Point(163, 50);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";

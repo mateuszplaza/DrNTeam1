@@ -19,11 +19,24 @@ namespace Initial_Consonant_Choice
         {
             InitializeComponent();
             this.FormClosing += FormUtils.HandleFormClosing;
+            checkBox1.Checked = true;
+            checkBox2.Checked = true;
+            checkBox3.Checked = true;
         }
 
         private void Settings_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected bool CheckParticipantID()
+        {
+            bool isOk = false;
+            if (textBox1.Text != String.Empty)
+            {
+                isOk = true;
+            }
+            return isOk;
         }
 
         // Begin Button
@@ -35,6 +48,13 @@ namespace Initial_Consonant_Choice
             bool idCorrect = checkBox3.Checked;
             int isi = (int)numericUpDown1.Value;
             int rf = (int)numericUpDown2.Value;
+
+            // Check for required Participant ID
+            if (!CheckParticipantID())
+            {
+                textBox1.BackColor = Color.MistyRose;
+                return;
+            }
 
             // Initialize Trial Settings
             settings = new TrialSettings(participantID, practice, idResponse, idCorrect, isi, rf);

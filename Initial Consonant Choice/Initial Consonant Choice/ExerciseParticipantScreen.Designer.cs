@@ -195,7 +195,6 @@
             Controls.Add(reinforcementPanel);
             Controls.Add(basePanel);
             Name = "ExerciseParticipantScreen";
-            Text = "ExerciseParticipantScreen";
             Load += ExerciseParticipantScreen_Load;
             ResizeEnd += UIResize;
             Resize += UIResize;
