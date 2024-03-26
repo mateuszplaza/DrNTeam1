@@ -146,12 +146,15 @@ namespace Initial_Consonant_Choice
 
             int increment = (int) Math.Ceiling((double)this.Width / 8500);
 
+            await Task.Run(() => Task.Delay(1000));
+            audioManager.HorseRunSound();
+
             while (horseImage.Location.X < finalX)
             {
                 BeginControlUpdate(horseImage);
                 horseImage.Location = new Point(horseImage.Location.X + increment, horseImage.Location.Y);
                 EndControlUpdate(horseImage);
-                await Task.Run(() => Task.Delay(1));
+                await Task.Run(() => Task.Delay(2));
             }
 
             audioManager.StopSound();

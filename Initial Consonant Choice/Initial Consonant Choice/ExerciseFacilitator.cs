@@ -430,6 +430,7 @@ namespace Initial_Consonant_Choice
         {
             if (phase == 1)
             {
+                phase1Panel.Controls.Remove(beginButton);
                 phase1();
                 data.trialTargetRepeats[curExercise]++;
             }
