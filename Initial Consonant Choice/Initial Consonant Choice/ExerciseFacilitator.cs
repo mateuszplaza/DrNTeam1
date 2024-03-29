@@ -362,8 +362,8 @@ namespace Initial_Consonant_Choice
             oneButton.BackColor = default(Color);
             oneButton.UseVisualStyleBackColor = true;
             data.childResponse[curExercise] = exercises[curExercise].choices[0];
-            nextExercise();
             enableButtons(true);
+            nextExercise();
         }
 
         private async void twoButton_Click(object sender, EventArgs e)
@@ -395,8 +395,8 @@ namespace Initial_Consonant_Choice
             twoButton.BackColor = default(Color);
             twoButton.UseVisualStyleBackColor = true;
             data.childResponse[curExercise] = exercises[curExercise].choices[1];
-            nextExercise();
             enableButtons(true);
+            nextExercise();
         }
 
         private async void threeButton_Click(object sender, EventArgs e)
@@ -428,8 +428,8 @@ namespace Initial_Consonant_Choice
             threeButton.BackColor = default(Color);
             threeButton.UseVisualStyleBackColor = true;
             data.childResponse[curExercise] = exercises[curExercise].choices[2];
-            nextExercise();
             enableButtons(true);
+            nextExercise();
         }
 
         private void replayButton_Click(object sender, EventArgs e)

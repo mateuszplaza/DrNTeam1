@@ -19,6 +19,10 @@ namespace Initial_Consonant_Choice.Utilities
                 if (result == DialogResult.No)
                 {
                     e.Cancel = true;
+                } else
+                {
+                       // Otherwise, close the form
+                    Application.Exit();
                 }
             }
         }
