@@ -289,12 +289,12 @@ namespace Initial_Consonant_Choice
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
 
-                // If the no button was pressed ...
+                // If the yes button was pressed ...
                 if (result == DialogResult.Yes)
                 {
-                    TrialEndScreen tes = new TrialEndScreen(data);
-                    tes.Show();
-                    quit();
+                    // End Program
+                    curExercise = exercises.Count - 1;
+                    nextExercise();
                 }
 
                 return true;
@@ -342,13 +342,11 @@ namespace Initial_Consonant_Choice
             {
                 oneButton.BackColor = Color.PaleGreen;
                 incorrectStreak = 0;
-                checkStreak();
             }
             else
             {
                 oneButton.BackColor = Color.PaleVioletRed;
                 incorrectStreak++;
-                checkStreak();
             }
 
             if(isPractice && settings.idCorrect)
@@ -365,6 +363,7 @@ namespace Initial_Consonant_Choice
             data.childResponse[curExercise] = exercises[curExercise].choices[0];
             enableButtons(true);
             nextExercise();
+            checkStreak();
         }
 
         private async void twoButton_Click(object sender, EventArgs e)
@@ -377,13 +376,11 @@ namespace Initial_Consonant_Choice
             {
                 twoButton.BackColor = Color.PaleGreen;
                 incorrectStreak = 0;
-                checkStreak();
             }
             else
             {
                 twoButton.BackColor = Color.PaleVioletRed;
                 incorrectStreak++;
-                checkStreak();
             }
 
             if (isPractice && settings.idCorrect)
@@ -401,6 +398,7 @@ namespace Initial_Consonant_Choice
             data.childResponse[curExercise] = exercises[curExercise].choices[1];
             enableButtons(true);
             nextExercise();
+            checkStreak();
         }
 
         private async void threeButton_Click(object sender, EventArgs e)
@@ -413,13 +411,11 @@ namespace Initial_Consonant_Choice
             {
                 threeButton.BackColor = Color.PaleGreen;
                 incorrectStreak = 0;
-                checkStreak();
             }
             else
             {
                 threeButton.BackColor = Color.PaleVioletRed;
                 incorrectStreak++;
-                checkStreak();
             }
 
             if (isPractice && settings.idCorrect)
@@ -437,6 +433,7 @@ namespace Initial_Consonant_Choice
             data.childResponse[curExercise] = exercises[curExercise].choices[2];
             enableButtons(true);
             nextExercise();
+            checkStreak();
         }
 
         private void replayButton_Click(object sender, EventArgs e)
@@ -461,9 +458,9 @@ namespace Initial_Consonant_Choice
 
         private void quitButton_Click(object sender, EventArgs e)
         {
-            TrialEndScreen tes = new TrialEndScreen(data);
-            tes.Show();
-            quit();
+            // End Program
+            curExercise = exercises.Count - 1;
+            nextExercise();
         }
 
         private void progressButton_Click(object sender, EventArgs e)
