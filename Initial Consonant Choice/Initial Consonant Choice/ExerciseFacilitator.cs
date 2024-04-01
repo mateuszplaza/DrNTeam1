@@ -141,7 +141,7 @@ namespace Initial_Consonant_Choice
             timer.Elapsed += OnTimeEvent;
         }
 
-        private void OnTimeEvent(object sender, ElapsedEventArgs e)
+        private void OnTimeEvent(Object source, ElapsedEventArgs e)
         {
             Invoke(new Action(() =>
             {
@@ -214,9 +214,6 @@ namespace Initial_Consonant_Choice
 
         public void nextExercise()
         {
-            timer.Stop();
-            data.responseTime[curExercise] = timerLabel.Text;
-
             data.numAttempted++;
             if(!isPractice && (data.numAttempted % settings.reinforcementFrequency == 0) && data.numAttempted != exercises.Count)
             {
@@ -234,6 +231,7 @@ namespace Initial_Consonant_Choice
             {
                 if (isPractice)
                 {
+                    timer.Dispose();
                     data.finishPractice();
                     PracticeEndScreen endScreen = new PracticeEndScreen(data, settings);
                     endScreen.Show();
@@ -336,6 +334,9 @@ namespace Initial_Consonant_Choice
 
         private async void oneButton_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+            data.responseTime[curExercise] = timerLabel.Text;
+
             enableButtons(false);
             if (exercises[curExercise].correctChoiceIndex == 0)
             {
@@ -368,6 +369,9 @@ namespace Initial_Consonant_Choice
 
         private async void twoButton_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+            data.responseTime[curExercise] = timerLabel.Text;
+
             enableButtons(false);
             if (exercises[curExercise].correctChoiceIndex == 1)
             {
@@ -401,6 +405,9 @@ namespace Initial_Consonant_Choice
 
         private async void threeButton_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+            data.responseTime[curExercise] = timerLabel.Text;
+
             enableButtons(false);
             if (exercises[curExercise].correctChoiceIndex == 2)
             {
