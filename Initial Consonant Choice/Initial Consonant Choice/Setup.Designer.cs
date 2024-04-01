@@ -123,9 +123,9 @@ namespace Initial_Consonant_Choice
             checkBox2.Location = new Point(68, 132);
             checkBox2.Margin = new Padding(3, 2, 3, 2);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(119, 19);
+            checkBox2.Size = new Size(161, 19);
             checkBox2.TabIndex = 7;
-            checkBox2.Text = "Identify Response";
+            checkBox2.Text = "Identify Response In Trials";
             checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -134,9 +134,9 @@ namespace Initial_Consonant_Choice
             checkBox3.Location = new Point(68, 155);
             checkBox3.Margin = new Padding(3, 2, 3, 2);
             checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(108, 19);
+            checkBox3.Size = new Size(166, 19);
             checkBox3.TabIndex = 8;
-            checkBox3.Text = "Identify Correct";
+            checkBox3.Text = "Identify Correct In Practice";
             checkBox3.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
