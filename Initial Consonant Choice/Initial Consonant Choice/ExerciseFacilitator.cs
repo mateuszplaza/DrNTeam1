@@ -223,6 +223,7 @@ namespace Initial_Consonant_Choice
             data.correctResponse[curExercise] = exercises[curExercise].correctChoice;
             if (data.childResponse[curExercise] == data.correctResponse[curExercise])
             {
+                data.responseCorrect[curExercise] = true;
                 data.numCorrect++;
             }
 

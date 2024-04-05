@@ -19,6 +19,7 @@ namespace Initial_Consonant_Choice.Utilities
         public bool[] targetCorrect = new bool[48];
         public int[] trialTargetRepeats = new int[48];
 
+        public bool[] responseCorrect = new bool[48];
         public string[] childResponse = new string[48];
         public string[] correctResponse = new string[48];
         public int[] trialStimulusRepeats = new int[48];
@@ -42,6 +43,7 @@ namespace Initial_Consonant_Choice.Utilities
 
             targetCorrect = new bool[48];
             trialTargetRepeats = new int[48];
+            responseCorrect = new bool[48];
             childResponse = new string[48];
             correctResponse = new string[48];
             trialStimulusRepeats = new int[48];
