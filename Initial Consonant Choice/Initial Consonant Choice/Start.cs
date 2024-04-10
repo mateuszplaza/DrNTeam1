@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Initial_Consonant_Choice
 {
+    // Start page, pretty simple, just a button to go to the setup page
     public partial class Start : Form
     {
         public Start()

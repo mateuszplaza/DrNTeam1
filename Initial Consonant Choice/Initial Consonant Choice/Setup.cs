@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Initial_Consonant_Choice
 {
+    // Setup Form
+    // This form is used to set up the trial settings and participant ID
+    // Creates a new TrialSettings object and TrialData object to pass to the ExerciseFacilitator
     public partial class Setup : Form
     {
         TrialSettings settings;

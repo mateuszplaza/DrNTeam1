@@ -19,6 +19,8 @@ namespace Initial_Consonant_Choice
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
+            // Begin application by showing the start screen
             Application.Run(new Start());
         }
     }

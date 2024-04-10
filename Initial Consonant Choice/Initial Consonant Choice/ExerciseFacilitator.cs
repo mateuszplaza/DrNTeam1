@@ -12,6 +12,8 @@ using Initial_Consonant_Choice.Utilities;
 
 namespace Initial_Consonant_Choice
 {
+    // This class controls both the facilitator and the participant screens for the exercise portion, both during practice and testing.
+    // All main business logic for the trials is contained here
     public partial class ExerciseFacilitator : Form
     {
         System.Timers.Timer timer;
@@ -27,8 +29,14 @@ namespace Initial_Consonant_Choice
         ExerciseParticipantScreen participantScreen;
         AudioManager audioManager;
 
+        // constant used for feedback delay
         const int FEEDBACK_TIME = 500;
 
+        // There are three phases
+        // Phase 0 is the trial initialization
+        // Phase 1 is the initial prompt word
+        // Phase 2 is the selection phase
+        // This function sets visibility of the relevant panels and controls on the page
         public void setPhase(int phase)
         {
             if (phase != 0 && phase != 1 && phase != 2)
@@ -60,6 +68,7 @@ namespace Initial_Consonant_Choice
             }
         }
 
+        // Sets labels for the current exercise
         public void setLabels()
         {
             oneButton.Text = "1: " + exercises[curExercise].choices[0];
@@ -71,6 +80,7 @@ namespace Initial_Consonant_Choice
 
         }
 
+        // Disable or enable all buttons
         public void enableButtons(bool enable)
         {
             foreach (Control c in this.Controls)
@@ -92,12 +102,13 @@ namespace Initial_Consonant_Choice
             }
         }
 
+        // Constructor
         public ExerciseFacilitator(bool isPractice, TrialSettings settings, TrialData data)
         {
             InitializeComponent();
-
             this.FormClosing += FormUtils.HandleFormClosing;
 
+            // Set exercise list
             this.isPractice = isPractice;
             if (isPractice)
             {
@@ -110,7 +121,8 @@ namespace Initial_Consonant_Choice
 
             this.settings = settings;
             this.data = data;
-
+            
+            // Initialize first exercise and set to initial phase
             setLabels();
             checkStreak();
             setPhase(0);
@@ -120,6 +132,7 @@ namespace Initial_Consonant_Choice
             participantScreen.randomizeFaces();
             participantScreen.enterPhase1();
 
+            // Show horse page if not in practice mode
             if (!isPractice)
             {
                 inReinforcement = true;
@@ -136,11 +149,13 @@ namespace Initial_Consonant_Choice
 
             audioManager = new AudioManager();
 
+            // initialize response timer
             timer = new System.Timers.Timer();
             timer.Interval = 1;
             timer.Elapsed += OnTimeEvent;
         }
 
+        // Timer tick management
         private void OnTimeEvent(Object source, ElapsedEventArgs e)
         {
             Invoke(new Action(() =>
@@ -167,6 +182,7 @@ namespace Initial_Consonant_Choice
             }));
         }
 
+        // Initialize phase 1
         public async void phase1()
         {
             setPhase(1);
@@ -179,6 +195,7 @@ namespace Initial_Consonant_Choice
             participantScreen.setSpeaker(-1);
         }
 
+        // Initialize phase 2
         public async void phase2()
         {
             setPhase(2);
@@ -212,14 +229,18 @@ namespace Initial_Consonant_Choice
             phase1Panel.Controls.Add(beginButton);
         }
 
+
+        // Called when an exercise is finished
         public void nextExercise()
         {
+            // Record data
             data.numAttempted++;
             if(!isPractice && (data.numAttempted % settings.reinforcementFrequency == 0) && data.numAttempted != exercises.Count)
             {
                 progressButton_Click(null, null);
             }
 
+            // Mark response as correct or incorrect
             data.correctResponse[curExercise] = exercises[curExercise].correctChoice;
             if (data.childResponse[curExercise] == data.correctResponse[curExercise])
             {
@@ -227,7 +248,9 @@ namespace Initial_Consonant_Choice
                 data.numCorrect++;
             }
 
+            // Move to next exercise
             curExercise++;
+            // If all exercises are done, end practice or trials
             if (curExercise == exercises.Count)
             {
                 if (isPractice)
@@ -246,6 +269,7 @@ namespace Initial_Consonant_Choice
                     participantScreen.beginReinforcement(exercises.Count, exercises.Count);
                 }
             }
+            // Otherwise, move to next exercise
             else
             {
                 setLabels();
@@ -257,6 +281,7 @@ namespace Initial_Consonant_Choice
             }
         }
 
+        // Quit the program, disposing of the participant screen and facilitator screen
         private void quit()
         {
             participantScreen.FormClosing -= FormUtils.HandleFormClosing;
@@ -265,6 +290,7 @@ namespace Initial_Consonant_Choice
             this.Close();
         }
 
+        // Check if the incorrect streak is too high, and if so, prompt the user to exit
         private bool checkStreak()
         {
             if (isPractice)
@@ -303,6 +329,7 @@ namespace Initial_Consonant_Choice
             return false;
         }
 
+        // Button click handlers
         private void beginButton_Click(object sender, EventArgs e)
         {
             if (phase == 0)
@@ -333,11 +360,15 @@ namespace Initial_Consonant_Choice
             awaitPhase2();
         }
 
+
+        // Handler for each button in the selection phase
         private async void oneButton_Click(object sender, EventArgs e)
         {
+            // Stop timer and record response time
             timer.Stop();
             data.responseTime[curExercise] = timerLabel.Text;
 
+            // Disable buttons and show feedback
             enableButtons(false);
             if (exercises[curExercise].correctChoiceIndex == 0)
             {
@@ -358,6 +389,7 @@ namespace Initial_Consonant_Choice
                 participantScreen.setSpeaker(1);
             }
 
+            // Wait for feedback time and reset button
             await Task.Run(() => Thread.Sleep(FEEDBACK_TIME));
             oneButton.BackColor = default(Color);
             oneButton.UseVisualStyleBackColor = true;
@@ -437,6 +469,7 @@ namespace Initial_Consonant_Choice
             checkStreak();
         }
 
+        // Replay, skip, and quit buttons
         private void replayButton_Click(object sender, EventArgs e)
         {
             if (phase == 1)
@@ -464,6 +497,7 @@ namespace Initial_Consonant_Choice
             nextExercise();
         }
 
+        // Show the reinforcement screen
         private void progressButton_Click(object sender, EventArgs e)
         {
             if (!inReinforcement)

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Initial_Consonant_Choice.Utilities
 {
+    // Class to store data for a single trial
+    // Keeps track of all results to be passed to the end screen and FileManager
     public class TrialData
     {
         public string participantID = "";
@@ -26,14 +28,9 @@ namespace Initial_Consonant_Choice.Utilities
 
         public string[] responseTime = new string[48];
 
-        //Input path to trials and their answers to initialize the correct response array. 
-        public TrialData()
-        {
-            /* TODO: Initialize correctResponse array according to answers from trialPath
-            If we randomize order of trials we need to store the new order of trials somewhere for the correct response
-            Array to make sense */
-        }
 
+        // This method is used to clear the saved results after a practice session
+        // The exercise page does not distinguish between practice and test trials, so extra data is saved and must be cleared
         public void finishPractice()
         {
             practiceScores[practiceTrialsRequired] = numCorrect;

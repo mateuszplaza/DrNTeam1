@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Initial_Consonant_Choice
 {
+    // This class is the screen that the participant sees during the exercise.
+    // It is controlled by the ExerciseFacilitator class, but contains some helper functions to manage the UI.
     public partial class ExerciseParticipantScreen : Form
     {
         ExerciseFacilitator facilitator;
@@ -24,6 +26,8 @@ namespace Initial_Consonant_Choice
         List<int> faceNums = new List<int>() { 1, 2, 3 };
         bool initialized = false;
 
+        // UI Scaling. For a detailed explanation of how this works, see project documentation
+        // Under Solution - Additional Features - UI Scaling
         public void UIResize(object sender, System.EventArgs e)
         {
             if(initialized) 
@@ -77,6 +81,7 @@ namespace Initial_Consonant_Choice
             
         }
 
+        // Randomizes the faces shown to the participant for each trial
         public void randomizeFaces()
         {
             Random rand = new Random();
@@ -89,6 +94,7 @@ namespace Initial_Consonant_Choice
             pictureBox3.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("face_" + faceNums[2]);
         }
 
+        // Sets visibility for each phase
         public void enterPhase1()
         {
             setSpeaker(-1);
@@ -113,6 +119,7 @@ namespace Initial_Consonant_Choice
             label3.Visible = true;
         }
 
+        // Highlights the face of the speaker
         public void setSpeaker(int speaker)
         {
             speaker--;
@@ -130,12 +137,15 @@ namespace Initial_Consonant_Choice
             }
         }
 
+        // Shows the reinforcement panel and animates the horse
         public async void beginReinforcement(int completed, int total)
         {
             basePanel.Visible = false;
             reinforcementPanel.Visible = true;
             this.BackColor = Color.LimeGreen;
 
+            // Progress is calculated based on the number of completed trials
+            // Horse moves to the right until it reaches the current proportion of completed trials
             float progress = (float)completed / total;
             int start = trackImage.Location.X;
             int finalX = start + (int)(progress * trackImage.Width) - horseImage.Width;
@@ -144,6 +154,7 @@ namespace Initial_Consonant_Choice
             AudioManager audioManager = new AudioManager();
             audioManager.StartHorseSound();
 
+            // Increments for each tick are calculated based on the width of the current window
             int increment = (int) Math.Ceiling((double)this.Width / 8500);
 
             await Task.Run(() => Task.Delay(1000));
@@ -166,6 +177,7 @@ namespace Initial_Consonant_Choice
                 audioManager.PlayCheer();
             }
 
+            // Allow facilitator to exit reinforcement
             facilitator.progressButton.Enabled = true;
         }
 
@@ -194,6 +206,7 @@ namespace Initial_Consonant_Choice
             control.Refresh();
         }
 
+        // Return to exercise panel
         public void endReinforcement()
         {
             this.BackColor = Color.White;
@@ -211,6 +224,8 @@ namespace Initial_Consonant_Choice
             SetStyle(ControlStyles.UserPaint, true);
         }
 
+        // Store initial positions of all controls
+        // Again, see documentation for a detailed explanation of how this works
         private void ExerciseParticipantScreen_Load(object sender, EventArgs e)
         {
             int numControls = basePanel.Controls.Count;

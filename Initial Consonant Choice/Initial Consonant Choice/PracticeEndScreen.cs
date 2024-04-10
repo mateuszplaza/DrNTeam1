@@ -15,13 +15,14 @@ namespace Initial_Consonant_Choice
         TrialData data;
         TrialSettings settings;
 
-
+        // Once practice session is complete, display the participant's score and show options to either practice again or continue to the main exercises
         public PracticeEndScreen(TrialData data, TrialSettings settings)
         {
             InitializeComponent();
             this.data = data;
             this.settings = settings;
             DisplayScore();
+            // If participant has completed 3 practice trials, disable the practice again button
             if(data.practiceTrialsRequired >= 3)
             {
                 PracticeAgainButton.Enabled = false;
