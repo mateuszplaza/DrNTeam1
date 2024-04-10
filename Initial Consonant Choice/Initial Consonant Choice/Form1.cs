@@ -7,6 +7,8 @@ using System.Speech.Synthesis;
 
 namespace Initial_Consonant_Choice
 {
+
+    // This is a debug page used to test the different forms of the application
     public partial class Form1 : Form
     {
         public Form1()

@@ -8,8 +8,10 @@ using System.Text;
 
 namespace Initial_Consonant_Choice.Utilities
 {
+    // Class that handles the exporting of the trial data to a CSV file
     internal class FileManager
     {
+        // Need to access the trial data to export it
         private TrialData trialData;
 
         public FileManager(TrialData trialData)
@@ -17,8 +19,10 @@ namespace Initial_Consonant_Choice.Utilities
             this.trialData = trialData;
         }
 
+        // Exports the trial data to a CSV file
         public void exportTrialData(string filePath)
         {
+            // retrieves all data from the trialData object
             string participantID = trialData.participantID;
             int practiceTrialsRequired = trialData.practiceTrialsRequired;
             int isi = trialData.interstimulusInterval;
@@ -32,6 +36,7 @@ namespace Initial_Consonant_Choice.Utilities
             bool[] responseCorrect = trialData.responseCorrect;
             string[] responseTime = trialData.responseTime;
 
+            // StringBuilder turns the data into a comma separated string
             string separator = ",";
             StringBuilder output = new StringBuilder();
 
@@ -52,7 +57,6 @@ namespace Initial_Consonant_Choice.Utilities
             string[] isiLine = { "ISI (ms)", isi.ToString() };
             output.AppendLine(string.Join(separator, isiLine));
 
-            // Is this out of 48 or numAttempted?
             string[] scoreLine = { "Test Score", "=\"" + numCorrect.ToString() + "/48\"" };
             output.AppendLine(string.Join(separator, scoreLine));
 
@@ -66,6 +70,8 @@ namespace Initial_Consonant_Choice.Utilities
                 output.AppendLine(string.Join(separator, newLine));
             }
 
+
+            // Writes the data to a file
             try
             {
                 File.WriteAllText(@filePath, output.ToString());

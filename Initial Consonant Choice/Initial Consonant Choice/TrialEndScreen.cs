@@ -12,11 +12,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Initial_Consonant_Choice
 {
+    // Trial end page, allows user to save data
     public partial class TrialEndScreen : Form
     {
         public TrialData data;
 
 
+        // Constructor, needs trial data from experiment to save
         public TrialEndScreen(TrialData data)
         {
             InitializeComponent();
@@ -70,6 +72,7 @@ namespace Initial_Consonant_Choice
             start.ShowDialog();
         }
 
+        // Save data to a CSV file, exports to FileManager
         private void SaveData()
         {
             FileManager FM = new FileManager(data);

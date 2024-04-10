@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Initial_Consonant_Choice.Utilities
 {
+    // Exercise class that contains a prompt word, three choices, the correct choice, and the index of the correct choice
+    // used to manage exercises
     public class Exercise
     {
         public String promptWord;
@@ -41,6 +43,8 @@ namespace Initial_Consonant_Choice.Utilities
             this.correctChoiceIndex = Array.IndexOf(choices, correctChoice);
         }
 
+        // Shuffles the order of the choices
+        // this is how the order of the choices is randomized during the exercise
         public void shuffleChoices()
         {
             Random rand = new Random();
@@ -57,6 +61,7 @@ namespace Initial_Consonant_Choice.Utilities
         }
     }
 
+    // ExerciseManager class that contains a list of the actual practice exercises and exercises
     public static class ExerciseManager
     {
         public static List<Exercise> practiceExercises = new List<Exercise>()

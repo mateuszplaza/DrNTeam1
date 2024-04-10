@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Initial_Consonant_Choice.Utilities
 {
+    // Class to store settings for a trial
+    // Contains participant ID, whether the trial is a practice trial, whether the trial requires an ID response, whether the ID response was correct, the stimulus delay, and the reinforcement frequency
+    // Setup page creates a TrialSettings object and passes it to the main form
     public class TrialSettings
     {
 

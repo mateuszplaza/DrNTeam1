@@ -8,6 +8,7 @@ namespace Initial_Consonant_Choice.Utilities
 {
     internal class FormUtils
     {
+        // Handle the form closing event. Adds a popup dialog to confirm the user wants to exit the application when the x button is clicked.
         public static void HandleFormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

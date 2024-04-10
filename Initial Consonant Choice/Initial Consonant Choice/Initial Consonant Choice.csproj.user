@@ -16,9 +16,6 @@
     <Compile Update="Start.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TestFacilitator.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

@@ -61,6 +61,8 @@ namespace Initial_Consonant_Choice.Utilities
             soundPlayer.PlaySync();
         }
 
+
+        // Below are some additional sound effects that are not tied to a specific word
         public void StartHorseSound()
         {
             soundPlayer = new SoundPlayer(Properties.Resources.ResourceManager.GetStream($"horse_snort_audio"));
